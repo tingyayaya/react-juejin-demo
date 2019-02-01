@@ -2,7 +2,8 @@
 Practice build react project, following page-style of 'juejin.com' , use 'react-router-dom' and 'mobx'. Take your advice~
 
 ### webpack配置
-为什么没有使用create-react-app？那是因为我不会在这个基础上拓展配置啊啊；后来看到有一篇分享 [如果拓展Creat reaact app 的webpack配置](https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/) 写的很详细；当我看到这篇文章时我已经选择尝试自己配环境，也幸好，虽然磕磕绊绊的，最后也算是成功了~
+为什么没有使用create-react-app？那是因为我不会在这个基础上拓展配置啊啊
+后来看到有一篇分享 [如果拓展Creat reaact app 的webpack配置](https://zhaozhiming.github.io/blog/2018/01/08/create-react-app-override-webpack-config/) 写的很详细；当我看到这篇文章时我已经选择尝试自己配环境，也幸好，虽然磕磕绊绊的，最后也算是成功了~
 
 1、html 和 css中图片路径不一致时 可以使用`extract-text-webpack-plugin`单独设置`publishPath` 更改css中图片的样式
   ```webpack
