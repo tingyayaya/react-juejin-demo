@@ -1,0 +1,39 @@
+@import '../../css/reset.css';
+@import '../../css/mixin.scss';
+
+/* 首页 header */
+html{
+  font-size: 12px;
+  background: #f4f5f5;
+}
+
+.container-fluid{
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.main-header{
+  // width: 100%;
+  background: #fff;
+  height: 5rem;
+  color: #71777c;
+  font-size: 1.33rem;
+}
+
+.main-header .navbar{
+  height: 100%;
+  @include flex-align-c;
+}
+
+
+// /* content */
+.welcome-view{
+  margin-top: 1.67rem;
+}
+
+@media screen and (max-width: 980px){
+  .main-header .container-fluid{
+    width: 96%;
+  }
+}

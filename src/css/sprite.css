@@ -1,0 +1,25 @@
+.w-icon { background-image: url(../images/sprite.png) }
+.w-icon-douban { display: inline-block; 
+              width: 54px;
+              height: 54px;
+              background-position: 0px 0px;
+              vertical-align: middle;
+            }
+.w-icon-qq { display: inline-block; 
+              width: 54px;
+              height: 54px;
+              background-position: -58px 0px;
+              vertical-align: middle;
+            }
+.w-icon-renren { display: inline-block; 
+              width: 54px;
+              height: 54px;
+              background-position: 0px -58px;
+              vertical-align: middle;
+            }
+.w-icon-weibo { display: inline-block; 
+              width: 54px;
+              height: 54px;
+              background-position: -58px -58px;
+              vertical-align: middle;
+            }
