@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 import { observer, inject} from 'mobx-react'
 import submitIcon from '../../images/submit-icon.svg'
-import Panel from './Panel'
 import { trace } from "mobx"
+import Panel from './Panel'
+
 
 @inject("store")
 @observer
@@ -14,11 +15,18 @@ class Offlog extends Component {
         isShow: PropTypes.bool.isRequired,
         onHideModal: PropTypes.func,
         onShowModal: PropTypes.func
+      }),
+      modal: PropTypes.shape({
+        isShow: PropTypes.bool.isRequired,
+        onHideModal: PropTypes.func,
+        onShowModal: PropTypes.func,
+        name: PropTypes.string.isRequired
       })
-    }).isRequired
+    }).isRequired,
+    
   }
   
-  handleShowModel(event) {
+  handleShowModal(event) {
     const { panel } = this.props.store
     if(panel.onShowModal){
       panel.onShowModal()
@@ -26,17 +34,36 @@ class Offlog extends Component {
     event.nativeEvent.stopImmediatePropagation();
     event.stopPropagation()
   }
- 
+  handleLoginModal(event) {
+    const { modal } = this.props.store
+    if(modal.onShowModal){
+      modal.name = 'login'
+      modal.onShowModal()
+    }
+    // event.nativeEvent.stopImmediatePropagation();
+    // event.stopPropagation()
+  }
+  handleRegisterModal(event) {
+    const { modal } = this.props.store
+    if(modal.onShowModal){
+      modal.name = 'register'
+      modal.onShowModal()
+    }
+    // event.nativeEvent.stopImmediatePropagation();
+    // event.stopPropagation()
+  }
   render() {trace(false)
     return (
       <ul className="auth-menu">
-        <li className="article" onClick={this.handleShowModel.bind(this)}>
+        <li className="article" onClick={this.handleShowModal.bind(this)}>
           <img src={submitIcon} alt="" />
-          <span >写文章</span>
+          <span>写文章</span>
           <Panel />
         </li><li className="register">
-          <span className="login-btn">登录</span><span className="register-btn">注册</span>
-        </li>)
+          <span className="login-btn" 
+          onClick={this.handleLoginModal.bind(this)}>登录</span><span className="register-btn"
+          onClick={this.handleRegisterModal.bind(this)}>注册</span>
+        </li>
       </ul>
     )
   }

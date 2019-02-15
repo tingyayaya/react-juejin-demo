@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import PrimaryLayout from '@/components/layout/PrimaryLayout'
+import PrimaryLayout from '../layout/PrimaryLayout'
 
 class Home extends Component {
   render() {

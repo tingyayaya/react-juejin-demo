@@ -1,11 +1,13 @@
-import routes from './routes'
 import panel from './panel'
 import user from './user'
+import modal from './modal'
+import alert from './alert'
 
 const stores = {
-  routes,
   panel,
-  user
+  user,
+  modal,
+  alert
 }
 
 export default stores

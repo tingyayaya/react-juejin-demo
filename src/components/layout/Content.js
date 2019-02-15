@@ -10,9 +10,11 @@ class Content extends Component {
     const { routes } = this.props.store
     return (
       <Fragment>
-        {routes.map((item, i) => 
-          (<Route path={item.path} component={item.component} key={i} exact={item.exact}/>)
-        )}
+        <Switch>
+          {routes.map((item, i) => 
+            (<Route path={item.path} component={item.component} key={i} exact={item.exact}/>)
+          )}
+        </Switch>
       </Fragment>
     )
   }

@@ -1,12 +1,15 @@
-import {computed, observable, action } from "mobx";
-import Activities from '../components/activities/Activities';
-
+import Home from '@/pages/Home';
+import Activities from '@/pages/Activities';
+import Topics from '@/pages/Topics';
+import Events from '@/pages/Events';
+import Books from '@/pages/Books';
+import ResetPassword from '@/pages/ResetPassword';
  
-var routes = observable([
+var routes =[
   {
     path: '/',
     exact: true,
-    component: Activities
+    component: Home
   },
   {
     path: '/activities',
@@ -14,16 +17,20 @@ var routes = observable([
   },
   {
     path: '/topics',
-    component: Activities
+    component: Topics
   },
   {
     path: '/books',
-    component: Activities
+    component: Books
   },
   {
     path: '/events',
-    component: Activities
+    component: Events
   },
-])
+  {
+    path: '/reset-password',
+    component: ResetPassword
+  }
+]
 
 export default routes

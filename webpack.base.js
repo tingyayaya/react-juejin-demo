@@ -6,6 +6,11 @@ const webpack = require('webpack');
 const SpritesmithPlugin = require('webpack-spritesmith');
 
 const config = {
+  resolve: {
+    alias: {
+      '@' : path.resolve(__dirname, 'src/')
+    }
+  },
   entry: path.resolve(__dirname, './src/index.js'),
   output: {
     filename: '[name].bundle.[hash:5].js',
