@@ -1,31 +1,26 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'mobx-react'
-import { HashRouter as Router, Switch, Route, Link, Redirect} from "react-router-dom";
+import { AppContainer } from 'react-hot-loader'
 
+import store from '@/stores/store'
 
-import store from './stores/store'
-import routes from './stores/routes'
+//引入mock.js
+require ("@/axios/mock.js")
 
 //layout
-
 import Page from '@/pages/Page'
-
+import RouteConfigExample from '@/components/app/RouteConfigExample'
 
 ReactDOM.render(
-  <Provider store={ store }>
-    <Router>
-      <Switch>
-        <Page />
-        {/* <Route component={Home} path="" exact/>
-        {
-          routes.map((route, i) => {
-            console.log(route)
-            return <Route exact={route.exact} key={i} component={route.component} path={route.path} />
-          })
-        } */}
-      </Switch>
-    </Router>
-  </Provider>,
+  <AppContainer>
+    <Provider store={ store }>
+      <Page />
+    </Provider>
+  </AppContainer>,
   document.querySelector('#root')
 )
+
+if(module.hot){
+  module.hot.accept();
+}

@@ -19,8 +19,9 @@
  
  *{
      -webkit-tap-highlight-color: transparent;
+     outline: none;
   }
- 
+  :focus {outline:none;}
  input, button, select, textarea {
      outline: none;
      -webkit-appearance: none;

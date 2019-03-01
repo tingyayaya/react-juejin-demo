@@ -1,16 +1,17 @@
-@import '../../css/reset.css';
-@import '../../css/mixin.scss';
+@import '~@/css/reset.css';
+@import '~@/css/mixin.scss';
 
 /* 首页 header */
 html{
   font-size: 12px;
   background: #f4f5f5;
 }
-
+body{
+  background: inherit !important;
+}
 .container-fluid{
   width: 100%;
   max-width: 980px;
-  margin: 0 auto;
 }
 
 .main-header{
@@ -27,9 +28,17 @@ html{
 }
 
 
-// /* content */
+//CenterMain LeftSide
 .welcome-view{
   margin-top: 1.67rem;
+  .right-side{
+    width: 20rem;
+    margin-left: 1.67rem;
+  }
+  .center-main{
+    overflow: hidden;
+    @include flex-1;
+  }
 }
 
 @media screen and (max-width: 980px){

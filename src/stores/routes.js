@@ -4,12 +4,23 @@ import Topics from '@/pages/Topics';
 import Events from '@/pages/Events';
 import Books from '@/pages/Books';
 import ResetPassword from '@/pages/ResetPassword';
+import Welcome from '@/pages/Welcome';
  
 var routes =[
   {
     path: '/',
     exact: true,
     component: Home
+  },
+  {
+    path: '/welcome',
+    component: Home,
+    routes: [
+      {
+        path: '/welcome/:name',
+        component: Welcome
+      }
+    ]
   },
   {
     path: '/activities',

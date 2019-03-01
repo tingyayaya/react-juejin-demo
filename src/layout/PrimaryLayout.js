@@ -6,6 +6,7 @@ import { observer, inject} from 'mobx-react'
 import './style.scss'
 import Header from '@/components/header/Header';
 import Modalbox from '@/components/modals/Modalbox';
+import Alert from '@/components/alert/Alert'
 
 @inject("store")
 @observer
@@ -22,6 +23,7 @@ class Layout extends Component {
   constructor() {
     super()
   }
+  
   _changeLoginModal(event) {
     const { modal } = this.props.store
     if(modal.onShowModal){
@@ -30,12 +32,17 @@ class Layout extends Component {
     event.nativeEvent.stopImmediatePropagation(); 
     event.stopPropagation()
   }
+ 
   render() { 
     const { modal } = this.props.store
+    const { alert } = this.props.store
     return (
       <div>
         <div className="global-component-box">
           { modal.isShow ? <Modalbox /> : ''}
+          <div className="alert-list">
+            <Alert alert={alert}/>
+          </div>
         </div>
         <div></div>
         <header className="main-header">

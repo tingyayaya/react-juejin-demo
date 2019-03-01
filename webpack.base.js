@@ -5,22 +5,35 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const SpritesmithPlugin = require('webpack-spritesmith');
 
+const extractSass = new ExtractTextPlugin({
+  filename: 'css/[name].[hash:5].css',
+  allChunks: true,
+  disable: process.env.NODE_ENV === "development" //在用 HMR 的时候要先把它关闭一下 disable: true
+})
+const BUILD_DIR = path.resolve(__dirname, 'dist')
+const APP_DIR = path.resolve(__dirname, 'src')
+
 const config = {
+  devtool: 'inline-source-map',
   resolve: {
     alias: {
-      '@' : path.resolve(__dirname, 'src/')
+      '@' : APP_DIR
     }
   },
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry: [
+    'react-hot-loader/patch',
+    "webpack-hot-middleware/client",
+    APP_DIR + '/index.js'
+  ],
   output: {
     filename: '[name].bundle.[hash:5].js',
-    path: path.resolve(__dirname, 'dist')
+    path: BUILD_DIR
   },
   module: {
     rules: [
       {
         test: /\.(css|scss)$/,
-        use: ExtractTextPlugin.extract({
+        use: extractSass.extract({
           // 编译后使用什么loader来提取css文件，如下使用 style-loader 来提取
           fallback: 'style-loader',
           // 需要什么样的loader去编译文件，比如如下使用css-loader 去编译文件
@@ -54,32 +67,25 @@ const config = {
         }
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-            plugins: [
-              ['@babel/plugin-proposal-decorators', { "legacy": true }],
-              ["@babel/plugin-proposal-class-properties", { "loose": true }],
-              ["@babel/plugin-transform-react-jsx"]
-            ]
-          }
+          loader: 'babel-loader'
         },
+        include: APP_DIR,
         exclude: /node_modeles/
       },
     ]
   },
   plugins: [
+    extractSass,
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
         template: './public/index.html', //指定模板路径
         filename: 'index.html' //指定文件名
     }),
     new CleanWebpackPlugin('dist/'),
-    new ExtractTextPlugin({
-      filename: 'css/[name].[hash:5].css',
-      allChunks: true
-    }),
+    
     new webpack.ProvidePlugin({
       Mock: 'mockjs'
     }),
@@ -88,14 +94,14 @@ const config = {
         padding: 4,
       },
       src: {
-        cwd: path.resolve(__dirname, 'src/images/icons/'), // 图标根路径
+        cwd: APP_DIR + '/images/icons/', // 图标根路径
         glob: '*.png' // 匹配任意 png 图标
       },
       target: {
-        image: path.resolve(__dirname, 'src/images/sprite.png'), // 生成雪碧图目标路径与名称
+        image:  APP_DIR + '/images/sprite.png', // 生成雪碧图目标路径与名称
         // 设置生成CSS背景及其定位的文件或方式
         css: [
-          [path.resolve(__dirname, 'src/css/sprite.css'), {
+          [`${APP_DIR}/css/sprite.css`, {
             format: 'function_based_template'
           }]
         ]
@@ -124,4 +130,5 @@ const config = {
     })
   ]
 }
+
 module.exports = config

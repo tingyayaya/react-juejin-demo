@@ -4,9 +4,10 @@ import {Link} from 'react-router-dom'
 import '@/css/reset-password.scss'
 
 import EmailPanel from '@/components/reset-password/EmailPanel'
+import PhonePanel from '@/components/reset-password/PhonePanel'
 import Nav from '@/components/reset-password/Nav'
-import FreeLayout from '@/components/layout/FreeLayout'
-import PrimaryLayout from '@/components/layout/PrimaryLayout'
+import FreeLayout from '@/layout/FreeLayout'
+
 
 class ResetPassword extends Component {
   constructor() {
@@ -16,7 +17,14 @@ class ResetPassword extends Component {
     }
   }
   onsubmit(data) {
-    console.log(data)
+    const { email } = data
+    const { phone, code, password } = data
+    if(email) {
+
+    }
+    if(phone) {
+      console.log(phone, code, password)
+    }
   }
   hanleChangeTab(g) {
     this.setState({
@@ -38,7 +46,7 @@ class ResetPassword extends Component {
                 </Nav>
               </div>
               <div className="form-body">
-                {panel === 0 ? <EmailPanel onsubmit={this.onsubmit.bind(this)}/> : '' }
+                {panel === 0 ? <EmailPanel onsubmit={this.onsubmit.bind(this)}/> : <PhonePanel onsubmit={this.onsubmit.bind(this)}/> }
                 <Link to="/" className="index-link">返回首页</Link>
               </div>
             </div>

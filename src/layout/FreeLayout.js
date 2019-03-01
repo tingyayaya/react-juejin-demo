@@ -16,15 +16,10 @@ class FreeLayout extends Component {
   }
   componentDidMount() {
     const {alert} = this.props.store
-    alert.initAlert({variant: 'danger', tips: '请输入'})
-  }
-  componentWillReceiveProps() {
-    const {alert} = this.props.store
-    console.log(alert.show)
   }
   render() { 
     const {alert} = this.props.store
-    console.log(alert)
+   
     return (
       <div>
         <div className="global-component-box">

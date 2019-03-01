@@ -1,5 +1,5 @@
-@import '../../css/reset.css';
-@import '../../css/mixin.scss';
+@import '~@/css/reset.css';
+@import '~@/css/mixin.scss';
 
 .my-nav{
   @include flex-1;
@@ -38,7 +38,7 @@
         width: 100%;
         border-radius: 2px; 
         background-color: rgba(227,231,236,.2);
-        padding: 0.67rem 2.5rem 0.67rem 0.83rem;
+        padding: 0.42rem 2.5rem 0.42rem 0.83rem;
         border: 1px solid hsla(0,0%,59%,.2);
         box-sizing: border-box;
       }
@@ -56,6 +56,7 @@
         top:50%;
         transform: translateY(-50%);
         z-index: 3;
+        cursor: pointer;
       }
     }
   }

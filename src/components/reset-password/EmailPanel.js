@@ -1,17 +1,28 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import { observer, inject} from 'mobx-react'
 
-
+@inject("store")
+@observer
 class EmailPanel extends Component {
   static propTypes = {
-    onsubmit: PropTypes.func
+    onsubmit: PropTypes.func,
+    store: PropTypes.shape({
+      alert: PropTypes.shape({
+        show: PropTypes.bool,
+        initAlert: PropTypes.func
+      }),
+      validate: PropTypes.shape({
+        email: PropTypes.func
+      }),
+    })
   }
   constructor() {
     super()
     this.state = {
       email: '',
-      tips: '请输入邮箱',
-      show: true
+      show: true,
+      successMsg: false
     }
   }
   handleInput(event) {
@@ -20,68 +31,39 @@ class EmailPanel extends Component {
     })
   }
   onsubmit(event) {
-    const { email } = this.state
-    if(this.props.submit){
-      this.props.onsubmit({email})
-    }
-    if(!email){
-      alert('请输入')
-    }
-    
+    this._validateEmail()
     event.preventDefault();
   }
 
-  _validation(){
+  _validateEmail(){
     const { email } = this.state
-
-    if(!email){
-      
+    const { alert, validate} = this.props.store
+    const result = validate.email({value: email})
+    if(result.pass){
+      return true
+    }else{
+      alert.initAlert(result)
+      return false
     }
   }
   render() {
     return (
       <div className="panel email">
-        <div className="input-group">
-          <input type="text" placeholder="请输入邮箱" autoComplete="off" className="input full-width"
-            value={this.state.email}
-            onChange={this.handleInput.bind(this)}/>
-          <button className="ui-btn ui-btn_primary submit-btn" onClick={this.onsubmit.bind(this)}>发送邮件</button>
-        </div>
+        { this.state.successMsg
+        ? <div className="success-message">密码重置邮件已发送，请前往邮箱重置密码</div>
+        :(<div className="content">
+            <div className="input-group">
+              <input type="text" placeholder="请输入邮箱" autoComplete="off" className="input full-width"
+                value={this.state.email}
+                onChange={this.handleInput.bind(this)}/>
+            </div>
+            <button className="ui-btn ui-btn_primary submit-btn" onClick={this.onsubmit.bind(this)}>发送邮件</button>
+          </div>
+          )
+        }
       </div>
     )
   }
 }
 
-class AlertDismissable extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { show: true };
-  }
-
-  render() {
-    const handleHide = () => this.setState({ show: false });
-    const handleShow = () => this.setState({ show: true });
-    return (
-      <>
-        <Alert show={this.state.show} variant="success">
-          <Alert.Heading>How's it going?!</Alert.Heading>
-          <p>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
-            eget lacinia odio sem nec elit. Cras mattis consectetur purus sit
-            amet fermentum.
-          </p>
-          <hr />
-          <div className="d-flex justify-content-end">
-            <Button onClick={handleHide} variant="outline-success">
-              Close me ya'll!
-            </Button>
-          </div>
-        </Alert>
-
-        {!this.state.show && <Button onClick={handleShow}>Show Alert</Button>}
-      </>
-    );
-  }
-}
 export default EmailPanel

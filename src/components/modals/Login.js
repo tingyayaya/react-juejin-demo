@@ -15,7 +15,11 @@ class Login extends Component {
         name: PropTypes.string.isRequired,
         onHideModal: PropTypes.fuc
       })
-    }).isRequired
+    }).isRequired,
+    validate: PropTypes.shape({
+      account: PropTypes.func,
+      password: PropTypes.func
+    }),
   }
   constructor() {
     super()
@@ -50,7 +54,9 @@ class Login extends Component {
   }
   onsubmit(event) {
     const { password, account } = this.state
-    if(this.props.submit){
+    const flag = this._validateAccount()&&this._validatePassword();
+
+    if(flag&&this.props.submit){
       this.props.submit({password, account})
     }
     event.preventDefault();
@@ -102,6 +108,28 @@ class Login extends Component {
       return 'blindfold'
     }else if(!this.state.passwordFocus&&!this.state.accountFocus){
       return 'normal'
+    }
+  }
+  _validateAccount() {
+    const { account } = this.state
+    const { alert, validate} = this.props.store
+    const result = validate.account({value: account})
+    if(result.pass){
+      return true
+    }else{
+      alert.initAlert(result)
+      return false
+    }
+  }
+  _validatePassword(){
+    const { password } = this.state
+    const { alert, validate} = this.props.store
+    const result = validate.password({value: password})
+    if(result.pass){
+      return true
+    }else{
+      alert.initAlert(result)
+      return false
     }
   }
   componentDidMount() {

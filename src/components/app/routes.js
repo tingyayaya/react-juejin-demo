@@ -1,26 +1,44 @@
-import About from './About'
-import Home from './Home'
-import Topics from './Topics'
-import Reset from './Rest'
+import Tacos from './Tacos';
+import Main from './Main';
+import Sandwiches from './Sandwiches';
+import Bus from './Bus';
+import Cart from './Cart';
+import Content from './Content'
 
-const routeConfig = [
+const routes = [
   {
-    path: '/about',
-    component: About
+    path: "/",
+    exact: true,
+    component: Main
   },
   {
-    path: '/',
-    component: Home,
-    exact: true
+    path: '/course',
+    component: Main,
+    routes: [
+      {
+        path: '/course/:name',
+        component: Content
+      }
+    ]
   },
   {
-    path: '/topics',
-    component: Topics
+    path: "/sandwiches",
+    component: Sandwiches
   },
   {
-    path: '/reset',
-    component: Reset
+    path: "/tacos",
+    component: Tacos,
+    routes: [
+      {
+        path: "/tacos/bus",
+        component: Bus
+      },
+      {
+        path: "/tacos/cart",
+        component: Cart
+      }
+    ]
   }
-]
+];
 
-export default routeConfig
+export default routes

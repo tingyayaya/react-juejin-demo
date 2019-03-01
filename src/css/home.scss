@@ -1,0 +1,135 @@
+
+@import '~@/css/mixin.scss';
+
+//导航
+.category-nav{
+  background: #fff;
+  padding: 1.67rem;
+  clear: both;
+  margin-bottom: 1px; 
+  cursor: pointer;
+  @include flex;
+  justify-content: space-between;
+  .nav-more{
+    line-height: 2;
+    display: none;
+  }
+  h5{
+    font-size: 1.33rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+  .nav-list{
+    display: block;
+    @include flex;
+    @include flex-align-c;
+    li{
+        color: $secondary-color;
+        font-size: 1.17rem;
+        margin-left: 2rem;
+        &.active{
+          color: $primary-color;
+        }
+        
+    }
+  }
+}
+
+//列表
+.content-box{
+  background: #fff;
+  padding: 1.33rem 1.67rem;
+  margin-bottom:1px; 
+  cursor: pointer;
+  .content-label{
+    color: #b2bac2;
+    font-size: 1rem; 
+    line-height: 2;
+    ul{
+      @include flex;
+      white-space: nowrap;
+      li{
+        &.sort{
+          @include text-ellipsis;
+        }
+        a+a::before{
+          content: "/";
+          margin: 0 0.42rem; 
+        }
+        a:hover{
+          color:#007fff;
+        }
+        a:hover::before{
+          color:#b2bac2;
+        }
+        &.hot{
+          font-weight: 500;
+          color: red;
+        }
+        &.column{
+          font-weight: 500;
+          color: #b71ed7;
+        }
+      }
+
+      /* 标签间隔小点 */
+      .label-point::after{
+        content: "\B7";
+        margin: 0 0.42rem; 
+      }
+      .label-point:last-child::after{
+        display: none;
+      }
+    }
+  }
+  .title{
+    @include text-ellipsis;
+    margin-bottom: 0.83rem;
+    a{
+      font-weight: 500;
+      line-height: 1.5;
+      font-size: 1.5rem;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    a:visited{
+      color: #909090;
+    }
+  
+  }
+  .action>ul{
+    @include flex;
+    white-space: nowrap;
+    li{
+      font-size: 1.17rem;
+      border: 1px solid #edeeef;
+      box-sizing: border-box;
+      padding: 0 0.5rem;
+      line-height: 1.6;
+      margin-left: -1px;
+      color: #b2bac2;
+      &.share-btn{
+        margin-left: 2rem;
+      }
+      &.hover{
+        visibility: hidden;
+      }
+      &:hover{
+        background: rgba(202, 210, 219, 0.2);
+      }
+      a{
+        height: 100%;
+        span{
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  &:hover{
+    background: #fcfcfc;
+    .action>ul>li.hover{
+      visibility: visible;
+    }
+  }
+}
