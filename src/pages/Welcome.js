@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
+import { trace } from 'mobx'
 
 import EntryList from '@/components/list/EntryList'
+import DiamondsLoading from '@/components/loading/DiamondsLoading'
 
 @inject('store')
 @observer
@@ -10,27 +12,22 @@ class Welcome extends Component {
   static propTypes = {
     store: PropTypes.shape({
       homeApi: PropTypes.shape({
-        entryList: PropTypes.array.isRequired
+        entryList: PropTypes.array
       })
     }).isRequired
   }
   constructor() {
     super() 
-    this.state = {
-      data: []
-    }
+    
   }
-  componentWillMount() {
-    this.props.store.homeApi.getList()
-  }
-  render() {
+  render() { 
     const { homeApi } = this.props.store
-    console.log(homeApi.entryList.data)
     return (
       <div>
-        {/* {homeApi.data.list.map((item, i) => {
-          <EntryList {...item}/>
-        })} */}
+        {
+          homeApi.entryList.map((item, i) => {
+            return <EntryList {...item} key={i}/> })
+        }
       </div>
     )
   }

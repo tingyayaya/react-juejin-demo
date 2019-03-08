@@ -5,6 +5,18 @@
               background-position: 0px 0px;
               vertical-align: middle;
             }
+.w-icon-left_hover { display: inline-block; 
+              width: 12px;
+              height: 12px;
+              background-position: -116px 0px;
+              vertical-align: middle;
+            }
+.w-icon-left { display: inline-block; 
+              width: 12px;
+              height: 12px;
+              background-position: -116px -34px;
+              vertical-align: middle;
+            }
 .w-icon-qq { display: inline-block; 
               width: 54px;
               height: 54px;
@@ -15,6 +27,18 @@
               width: 54px;
               height: 54px;
               background-position: 0px -58px;
+              vertical-align: middle;
+            }
+.w-icon-right_hover { display: inline-block; 
+              width: 12px;
+              height: 12px;
+              background-position: -116px -17px;
+              vertical-align: middle;
+            }
+.w-icon-right { display: inline-block; 
+              width: 12px;
+              height: 12px;
+              background-position: -116px -50px;
               vertical-align: middle;
             }
 .w-icon-weibo { display: inline-block; 

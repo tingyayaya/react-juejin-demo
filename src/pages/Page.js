@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import { HashRouter as Router, Switch, Route, Link, withRouter, Redirect} from "react-router-dom";
 
-import routes from '@/stores/routes'
+import routes from '@/routes/routes'
 import RouteWithSubRoutes from '@/layout/RouteWithSubRoutes'
+
 
 class Page extends Component {
   render() {

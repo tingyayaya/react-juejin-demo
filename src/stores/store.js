@@ -5,6 +5,7 @@ import alert from './alert'
 import validate from './validate'
 import homeApi from './homeApi'
 
+
 const stores = {
   panel,
   user,

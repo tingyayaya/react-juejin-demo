@@ -7,6 +7,7 @@ import './style.scss'
 import Header from '@/components/header/Header';
 import Modalbox from '@/components/modals/Modalbox';
 import Alert from '@/components/alert/Alert'
+import BackToTop from '@/layout/BackToTop'
 
 @inject("store")
 @observer
@@ -23,33 +24,25 @@ class Layout extends Component {
   constructor() {
     super()
   }
-  
-  _changeLoginModal(event) {
-    const { modal } = this.props.store
-    if(modal.onShowModal){
-      modal.onShowModal()
-    }
-    event.nativeEvent.stopImmediatePropagation(); 
-    event.stopPropagation()
-  }
- 
   render() { 
     const { modal } = this.props.store
     const { alert } = this.props.store
     return (
       <div>
         <div className="global-component-box">
-          { modal.isShow ? <Modalbox /> : ''}
+          { modal.isShow && <Modalbox />}
           <div className="alert-list">
             <Alert alert={alert}/>
           </div>
+          <BackToTop />
         </div>
-        <div></div>
-        <header className="main-header">
-          <nav className="container-fluid flex-view navbar">
-            <Header />
-          </nav>
-        </header>
+        <div className="main-header-box"> 
+          <header className="main-header">
+            <nav className="container-fluid flex-view navbar">
+              <Header />
+            </nav>
+          </header>
+        </div>
         <div className="container-fluid welcome-view flex-view">
           {this.props.children}
         </div>

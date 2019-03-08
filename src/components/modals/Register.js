@@ -68,13 +68,16 @@ class Register extends Component {
   handleRegister(event) {
     const { password, account, phone, code } = this.state
     const { alert } = this.props.store
-    const flag = this._validateAccount()&&this._validateCode()&&this._validatePassword()
-    if(flag&&this.props.register){
-      this.props.register({password, account, phone, code})
-    }
     const { captchaResult } = this.state
-    if(!captchaResult){
-      alert.initAlert({variant: 'danger', tips: '请先完成验证'})
+
+    const flag = this._validateAccount()&&this._validatePhone()&&this._validateCode()&&this._validatePassword()
+    if(flag&&this.props.register){
+      
+      if(!captchaResult){
+        alert.initAlert({variant: 'danger', tips: '请先完成验证'})
+      }else{
+        this.props.register({password, account, phone, code})
+      }
     }
     event.preventDefault();
   }
@@ -96,6 +99,18 @@ class Register extends Component {
     }else{
       return true
     }
+  }
+  _validatePhone() {
+    const { phone } = this.state
+    const { alert, validate } = this.props.store
+    const result = validate.phone({value: phone})
+    if(result.pass){
+      return true
+    }else{
+      alert.initAlert(result)
+      return false
+    }
+    
   }
   _validatePassword() {
     const { password } = this.state
@@ -121,7 +136,9 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    this.account.focus()
+    if(!this.props.parent){
+      this.account.focus()
+    }
   }
   render() {
     return (
@@ -150,7 +167,7 @@ class Register extends Component {
             </div>
           </div>
           <button className="ui-btn ui-btn_primary" onClick={this.handleRegister.bind(this)}>注册</button>
-          <div className="button-group">
+          <div className="button-group flag">
             <div style={{"margin": "0 auto"}}><span className="register" onClick={this.handleChangeModalName.bind(this)} className="link">已有账号登录</span></div>
           </div>
       </Fragment>

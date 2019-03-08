@@ -14,12 +14,21 @@ body{
   max-width: 980px;
 }
 
+.main-header-box{
+  height: 5rem;
+}
 .main-header{
   // width: 100%;
   background: #fff;
   height: 5rem;
   color: #71777c;
   font-size: 1.33rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 250;
+  border: 1px solid #f1f1f1;
 }
 
 .main-header .navbar{
@@ -39,6 +48,32 @@ body{
     overflow: hidden;
     @include flex-1;
   }
+}
+.suspension-panel{
+  @include flex;
+  @include flex-direction-column;
+  @include flex-align-c;
+  @include flex-justify-end;
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1000;
+}
+.fixed-btn{
+  margin: 1rem 0 0;
+  padding: 0;
+  width: 3.33rem;
+  height: 3.33rem;
+  line-height: 1;
+  color: #909090;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,.05);
+  cursor: pointer;
+  @include flex;
+  @include flex-align-c;
+  @include flex-justify-c;
 }
 
 @media screen and (max-width: 980px){

@@ -8,7 +8,7 @@ class PrimaryNav extends Component {
   constructor() {
     super()
     this.state = {
-      activeIndex: 0
+      activeIndex: ''
     }
   }
   handleChangeTab(g, e){
@@ -19,14 +19,21 @@ class PrimaryNav extends Component {
       this.props.handleChangeTab(g)
     }
   }
+  componentDidMount() {
+    const pathname = this.props.pathname.split('/')
+    const name = pathname[pathname.length-1]
+    this.setState({
+      activeIndex: name
+    })
+  }
   render() {
     return (
       <Fragment>
         {this.props.children.map((child, i) => {
           return React.cloneElement(child, {
-            className: [this.props.className,this.state.activeIndex===i ? 'active': ''].join(' '),
+            className: [child.props.name === this.state.activeIndex? 'active': ''].join(' '),
             key: i,
-            onClick: this.handleChangeTab.bind(this, i)
+            onClick: this.handleChangeTab.bind(this, child.props.name)
           })
         })}
       </Fragment>
