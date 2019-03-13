@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
 
+import style from './style.scss'
+
 @inject('store')
 @observer
 class Login extends Component {
@@ -138,17 +140,17 @@ class Login extends Component {
   render() {
     return (
       <Fragment>
-        <div className="input-group">
-          <div className="input-box">
-            <input type="text" maxLength="64" placeholder="请输入手机号或邮箱" className="input" name="phoneOrEmail" autoComplete="off" 
+        <div className={style["input-group"]}>
+          <div className={style["input-box"]}>
+            <input type="text" maxLength="64" placeholder="请输入手机号或邮箱" className={style["input"]} name="phoneOrEmail" autoComplete="off" 
               value={this.state.account}
               ref={account => this.account = account}
               onBlur={this.handleAccountBlur.bind(this)}
               onFocus={this.handleAccountFocus.bind(this)}
               onChange={this.handleInputPhone.bind(this)}/>
           </div>
-          <div className="input-box">
-            <input type="password" maxLength="64" placeholder="请输入密码" className="input" name="password" autoComplete="off"
+          <div className={style["input-box"]}>
+            <input type="password" maxLength="64" placeholder="请输入密码" className={style["input"]} name="password" autoComplete="off"
               value={this.state.password}
               onBlur={this.handlePasswordBlur.bind(this)}
               onFocus={this.handlePasswordFocus.bind(this)}
@@ -156,9 +158,9 @@ class Login extends Component {
           </div>
         </div>
         <button className="ui-btn ui-btn_primary" onClick={this.onsubmit.bind(this)}>登录</button>
-        <div className="button-group">
-          <div>没有账号？<span className="link" onClick={this.handleChangeModalName.bind(this)}>注册</span></div>
-          <div><Link to="/reset-password" onClick={this.handleModalClose.bind(this)} className="link"> 忘记密码</Link></div>
+        <div className={style["input-group"]}>
+          <div>没有账号？<span className={style["link"]} onClick={this.handleChangeModalName.bind(this)}>注册</span></div>
+          <div><Link to="/reset-password" onClick={this.handleModalClose.bind(this)} className={style["link"]}> 忘记密码</Link></div>
         </div>
       </Fragment>
     )

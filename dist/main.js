@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("throw new Error(\"Module parse failed: Unexpected token (16:2)\\nYou may need an appropriate loader to handle this file type.\\n| \\n| ReactDOM.render(\\n>   <AppContainer>\\n|     <Provider store={ store }>\\n|       <Page />\");\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("throw new Error(\"Module parse failed: Unexpected token (18:2)\\nYou may need an appropriate loader to handle this file type.\\n| \\n| ReactDOM.render(\\n>   <AppContainer>\\n|     <Provider store={ store }>\\n|       <Page />\");\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

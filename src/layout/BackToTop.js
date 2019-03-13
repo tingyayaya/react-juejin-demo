@@ -4,6 +4,8 @@ import Icon  from '@mdi/react'
 import { mdiDotsHorizontalCircle } from '@mdi/js'
 import { mdiMenuUp } from '@mdi/js'
 
+import style from './style.scss'
+
 class BackToTop extends Component {
   componentDidMount() {
     window.addEventListener('scroll', () => {
@@ -41,15 +43,15 @@ class BackToTop extends Component {
   render() {
     const { show } = this.state
     return (
-      <div className="suspension-panel">
+      <div className={style["suspension-panel"]}>
         {
           show &&
-          <div className="fixed-btn"
+          <div className={style["fixed-btn"]}
             onClick={this.handleGoTop.bind(this)} >
             <Icon path={ mdiMenuUp } color='#909090' size={1.2} className="arrow-drop"/>
           </div> 
         }
-        <div className="fixed-btn">
+        <div className={style["fixed-btn"]}>
           <Icon path={ mdiDotsHorizontalCircle } color='#007fff' size={0.9} className="chat-bubble" />
         </div>
       </div>

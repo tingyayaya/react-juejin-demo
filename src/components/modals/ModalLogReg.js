@@ -14,6 +14,8 @@ import github from '../../images/github.svg'
 import Login from './Login'
 import Register from './Register';
 
+import style from './style.scss'
+
 @inject('store')
 @observer
 class ModalLogin extends Component {
@@ -55,27 +57,27 @@ class ModalLogin extends Component {
   render() {
     const { modal } = this.props.store
     return (
-      <form className="auth-form">
-        <div className="panfish" style={modal.name==='login' ? {display: ''} : { display: 'none'}}>
-          <img src={ loginGreeting } alt="" style={this.state.onfocus==='greeting' ? {display: ''} : { display: 'none'} } className="greeting"/>
-          <img src={ loginBlindfold } alt="" style={this.state.onfocus==='blindfold' ? {display: ''} :  { display: 'none'}} className="blindflod"/>
-          <img src={ loginNormal } alt="" className="normal" style={this.state.onfocus==='normal' ?  {display: ''} : { display: 'none'}}/>
+      <form className={style["auth-form"]}>
+        <div className={style["panfish"]} style={modal.name==='login' ? {display: ''} : { display: 'none'}}>
+          <img src={ loginGreeting } alt="" style={this.state.onfocus==='greeting' ? {display: ''} : { display: 'none'} } className={style["greeting"]}/>
+          <img src={ loginBlindfold } alt="" style={this.state.onfocus==='blindfold' ? {display: ''} :  { display: 'none'}} className={style["blindflod"]}/>
+          <img src={ loginNormal } alt="" className={style["normal"]} style={this.state.onfocus==='normal' ?  {display: ''} : { display: 'none'}}/>
         </div>
-        <Icon path={ mdiClose } size={1} className="close" onClick={this.handleLoginModal.bind(this)}/>
-        <header className="title">{modal.name==='login' ? '登录' : '注册'}</header>
+        <Icon path={ mdiClose } size={1} className={style["close"]} onClick={this.handleLoginModal.bind(this)}/>
+        <header className={style["title"]}>{modal.name==='login' ? '登录' : '注册'}</header>
         {modal.name==='login' 
           ? <Login submit={this.handleSubmit.bind(this)} changeFoucs={this.handleFocus.bind(this)}/> 
           : <Register handleRegister={this.handleRegister.bind(this)} /> }
-        <div className="other-login">
-          <div className="other-title">第三方账号登录</div>
-          <div className="oauth ">
-            <div className="oauth-bg flex-view-center-all">
+        <div className={style["other-login"]}>
+          <div className={style["other-title"]}>第三方账号登录</div>
+          <div className={style["oauth"]}>
+            <div className={`${style["oauth-bg"]} ${style["flex-view-center-all"]}`}>
               <img src={weibo} alt="微博" />
             </div>
-            <div className="oauth-bg flex-view-center-all">
+            <div className={`${style["oauth-bg"]} ${style["flex-view-center-all"]}`}>
               <img src={weixin} alt="github" />
             </div>
-            <div className="oauth-bg flex-view-center-all"><img src={github} alt="微信" /></div>
+            <div className={`${style["oauth-bg"]} ${style["flex-view-center-all"]}`}><img src={github} alt="微信" /></div>
           </div>
         </div>
       </form>

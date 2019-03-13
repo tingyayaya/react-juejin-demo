@@ -1,0 +1,116 @@
+@import "~@/css/variables.scss";
+
+//列表
+.content-box{
+  background: #fff;
+  padding: 1.33rem 1.67rem;
+  margin-bottom:1px; 
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  .info{
+    flex: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .thumb{
+    flex: none;
+    margin-left: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2px;
+    background-color: #fff; 
+  }
+  .content-label{
+    color: #b2bac2;
+    font-size: 1rem; 
+    line-height: 2;
+    ul{
+      display: flex;
+      white-space: nowrap;
+      li{
+        &.sort{
+          @include text-ellipsis;
+        }
+        a+a::before{
+          content: "/";
+          margin: 0 0.42rem; 
+        }
+        a:hover{
+          color:$primary;
+        }
+        a:hover::before{
+          color:#b2bac2;
+        }
+        &.hot{
+          font-weight: 500;
+          color: $danger;
+        }
+        &.column{
+          font-weight: 500;
+          color: #b71ed7;
+        }
+      }
+
+      /* 标签间隔小点 */
+      .label-point::after{
+        content: "\B7";
+        margin: 0 0.42rem; 
+      }
+      .label-point:last-child::after{
+        display: none;
+      }
+    }
+  }
+  .title{
+    @include text-ellipsis;
+    margin-bottom: 0.83rem;
+    a{
+      font-weight: 500;
+      line-height: 1.5;
+      font-size: 1.5rem;
+      &:hover{
+        text-decoration: underline;
+      }
+    }
+    a:visited{
+      color: #909090;
+    }
+  
+  }
+  .action>ul{
+    display: flex;
+    white-space: nowrap;
+    li{
+      font-size: 1.083rem;
+      border: 1px solid #edeeef;
+      box-sizing: border-box;
+      padding: 0 0.5rem;
+      line-height: 1.6;
+      margin-left: -1px;
+      color: #b2bac2;
+      &.share-btn{
+        margin-left: 2rem;
+      }
+      &.hover{
+        visibility: hidden;
+      }
+      &:hover{
+        background: rgba(202, 210, 219, 0.2);
+      }
+      a{
+        height: 100%;
+        span{
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  &:hover{
+    background: #fcfcfc;
+    .action>ul>li.hover{
+      visibility: visible;
+    }
+  }
+}

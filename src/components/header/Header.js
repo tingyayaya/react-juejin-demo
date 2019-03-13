@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { HashRouter as Router,Link, Route, Switch} from "react-router-dom";
 import { observer, inject} from 'mobx-react';
 
-import './style.scss'
+import  style from './style.scss'
 import Logo from './Logo'
 import Search from './search'
 import Authmenu from './Authmenu'
@@ -14,10 +14,10 @@ class Header extends Component {
     const { routes } = this.props.store
    
     return (
-      <div className="my-nav">
+      <div className={style['my-nav']}>
         <Logo />
-        <ul className="menu">
-          <li className="active">
+        <ul className={style.menu}>
+          <li className={style.active}>
             <Link to="/">首页</Link>
           </li>
           <li>
@@ -33,8 +33,8 @@ class Header extends Component {
             <Link to="/events">活动</Link>
           </li>
         </ul>
-        <Search />
-        <Authmenu />
+        {/* <Search /> */}
+        {/* <Authmenu /> */}
       </div>
     )
   }

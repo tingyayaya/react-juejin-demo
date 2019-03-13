@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import CaptchaBtn from '@/components/reset-password/CaptchaBtn'
 
+import Button from 'react-bootstrap/Button'
+
+import style from './style.scss'
+
+
 @inject('store')
 @observer
 class Register extends Component {
@@ -141,34 +146,35 @@ class Register extends Component {
     }
   }
   render() {
+    const { flag } = this.props
     return (
       <Fragment>
-        <div className="input-group">
-            <div className="input-box">
-              <input type="text" maxLength="20" placeholder="请输入用户名" className="input" name="registerUsername" autoComplete="off"
+        <div className={style["input-group"]}>
+            <div className={style["input-box"]}>
+              <input type="text" maxLength="20" placeholder={`${ flag ? "用户名": "请输入用户名"}`} className={style["input"]} name="registerUsername" autoComplete="off"
                 ref={account => this.account = account}
                 value={this.state.account} onChange={this.handleInputAccount.bind(this)}/>
             </div>
-            <div className="input-box">
-              <input type="text" maxLength="64" placeholder="请输入手机号" className="input" name="registerPhoneNumber" autoComplete="off"
+            <div className={style["input-box"]}>
+              <input type="text" maxLength="64" placeholder={`${ flag ? "手机号": "请输入手机号"}`} className={style["input"]} name="registerPhoneNumber" autoComplete="off"
                 value={this.state.phone}
                 onChange={this.handleInputPhone.bind(this)}/>
             </div>
-            <div className="input-box" style={{display: this.state.showCaptchaBtn ? 'block': 'none'}}>
-              <input type="text" maxLength="20" placeholder="请输入验证码" className="input" name="registerCode" autoComplete="off"
+            <div className={style["input-box"]} style={{display: this.state.showCaptchaBtn ? 'block': 'none'}}>
+              <input type="text" maxLength="20" placeholder={`${ flag ? "验证码": "请输入验证码"}`} className={style["input"]} name="registerCode" autoComplete="off"
                 value={this.state.code}
                 onChange={this.handleCode.bind(this)}/>
                 <CaptchaBtn phone={this.state.phone} getCaptchaResult={this.getCaptchaResult.bind(this)}/>
             </div>
-            <div className="input-box">
-              <input type="password" maxLength="64" placeholder="请输入密码(不少于6位)" className="input" name="registerPassword" autoComplete="off"
+            <div className={style["input-box"]}>
+              <input type="password" maxLength="64" placeholder={`${ flag ? "密码(不少于6位)": "请输入密码(不少于6位)"}`} className={style["input"]} name="registerPassword" autoComplete="off"
                 value={this.state.password}
                 onChange={this.handleInputPassword.bind(this)}/>
             </div>
           </div>
-          <button className="ui-btn ui-btn_primary" onClick={this.handleRegister.bind(this)}>注册</button>
-          <div className="button-group flag">
-            <div style={{"margin": "0 auto"}}><span className="register" onClick={this.handleChangeModalName.bind(this)} className="link">已有账号登录</span></div>
+          <Button className="primary" onClick={this.handleRegister.bind(this)}>注册</Button>
+          <div className={`${style["button-group"]} ${ flag && 'hide'}`}>
+            <div style={{"margin": "0 auto"}}><span className={`${style["link"]}`} onClick={this.handleChangeModalName.bind(this)}>已有账号登录</span></div>
           </div>
       </Fragment>
     )

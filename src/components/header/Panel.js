@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { observer, inject} from 'mobx-react'
 import { trace } from "mobx"
 
+import style from './style.scss'
+
 @inject("store")
 @observer
 class Panel extends Component {
@@ -32,16 +34,16 @@ class Panel extends Component {
     })
   }
   render() { trace(false)
-    const {panel} = this.props.store;
+    const { panel } = this.props.store;
     return (
-      <div className={`submit-panel ${panel.isShow ? '':'hide'}`}>
-        <div className="title">来掘金写文章，您将有机会</div>
-        <ul className="item">
+      <div className={`${style['submit-panel']}`}>
+        <div className={style.title}>来掘金写文章，您将有机会</div>
+        <ul className={style.item}>
           <li>与超过300万开发者分享您的经验和观点</li>
           <li>呗编辑推荐，将获得更多曝光和关注</li>
           <li>加入专栏作者群，解释众多优秀开发者</li>
         </ul>
-        <div className="ui-btn btn" onClick={this.handleHideModal.bind(this)}>写文章</div>
+        <div className={`${style['ui-btn']} ${style['btn']}`} onClick={this.handleHideModal.bind(this)}>写文章</div>
       </div>
     )
   }

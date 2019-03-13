@@ -1,154 +1,5 @@
+@import '~@/css/variables.scss';
 
-@import '~@/css/mixin.scss';
-@import '~@/css/sprite.css';
-
-//导航
-.category-nav{
-  background: #fff;
-  padding: 1.67rem;
-  clear: both;
-  margin-bottom: 1px; 
-  @include flex;
-  justify-content: space-between;
-  .nav-more{
-    line-height: 2;
-    display: none;
-  }
-  h5{
-    font-size: 1.33rem;
-    display: inline-block;
-    font-weight: 500;
-  }
-  .nav-list{
-    display: block;
-    @include flex;
-    @include flex-align-c;
-    li{
-        color: $secondary-color;
-        font-size: 1.17rem;
-        margin-left: 2rem;
-        &.active{
-          color: $primary-color;
-        }
-        
-    }
-  }
-}
-
-//列表
-.content-box{
-  background: #fff;
-  padding: 1.33rem 1.67rem;
-  margin-bottom:1px; 
-  cursor: pointer;
-  @include flex;
-  @include flex-align-c;
-  .info{
-    @include flex-auto;
-    @include flex;
-    @include flex-direction-column;
-    min-width: 0;
-  }
-  .thumb{
-    @include flex-none;
-    margin-left: 2rem;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 2px;
-    background-color: #fff; 
-  }
-  .content-label{
-    color: #b2bac2;
-    font-size: 1rem; 
-    line-height: 2;
-    ul{
-      @include flex;
-      white-space: nowrap;
-      li{
-        &.sort{
-          @include text-ellipsis;
-        }
-        a+a::before{
-          content: "/";
-          margin: 0 0.42rem; 
-        }
-        a:hover{
-          color:#007fff;
-        }
-        a:hover::before{
-          color:#b2bac2;
-        }
-        &.hot{
-          font-weight: 500;
-          color: red;
-        }
-        &.column{
-          font-weight: 500;
-          color: #b71ed7;
-        }
-      }
-
-      /* 标签间隔小点 */
-      .label-point::after{
-        content: "\B7";
-        margin: 0 0.42rem; 
-      }
-      .label-point:last-child::after{
-        display: none;
-      }
-    }
-  }
-  .title{
-    @include text-ellipsis;
-    margin-bottom: 0.83rem;
-    a{
-      font-weight: 500;
-      line-height: 1.5;
-      font-size: 1.5rem;
-      &:hover{
-        text-decoration: underline;
-      }
-    }
-    a:visited{
-      color: #909090;
-    }
-  
-  }
-  .action>ul{
-    @include flex;
-    white-space: nowrap;
-    li{
-      font-size: 1.17rem;
-      border: 1px solid #edeeef;
-      box-sizing: border-box;
-      padding: 0 0.5rem;
-      line-height: 1.6;
-      margin-left: -1px;
-      color: #b2bac2;
-      &.share-btn{
-        margin-left: 2rem;
-      }
-      &.hover{
-        visibility: hidden;
-      }
-      &:hover{
-        background: rgba(202, 210, 219, 0.2);
-      }
-      a{
-        height: 100%;
-        span{
-          vertical-align: middle;
-        }
-      }
-    }
-  }
-  &:hover{
-    background: #fcfcfc;
-    .action>ul>li.hover{
-      visibility: visible;
-    }
-  }
-}
 .w-shadow{
   box-shadow: 0 1px 2px 0 rgba(0,0,0,.05)
 }
@@ -165,32 +16,32 @@
       line-height: 1.3;
     }
     .price>.new{
-      color: $warning-color;
+      color: $danger;
       margin-right: 0.6rem;
     }
     .price>.delete{
-      color: $secondary-color;
+      color: $gray-500;
       text-decoration: line-through;
     }
     .title{
       font-weight: 500;
       font-size: 14px;
       span.warning-text{
-        color: $warning-color;
+        color: $danger;
       }
     }
     .desc{
-      color: $secondary-color;
+      color: $gray-500;
     }
   }
   .header{
     padding: 0 1.25rem;
-    @include flex;
+    display: flex;
     line-height: 3.2;
     font-size: 14px;
     border-bottom: 1px solid rgba(160, 160, 172, 0.2);
     .left{
-      @include flex-1;
+      flex: 1;
       overflow: hidden;
       white-space: nowrap;
     }
@@ -198,7 +49,7 @@
       font-size: 12px;
       .more{
         line-height: 3.6;
-        color: $primary-color;
+        color: $primary;
       }
     }
     .icon-nav-left, .icon-nav-right{
@@ -207,19 +58,17 @@
       outline:none;
       -webkit-appearance: none;
       &:hover{
-        color: $primary-color;
+        color: $primary;
       }
     }
   }
-  .flag{
-    display: none;
-  }
+ 
   .title{
     font-weight: 400;
     font-size: 1.17rem;
     margin-bottom: .5rem;
     span.warning-text{
-      color: $warning-color;
+      color: $danger;
     }
     h5{
       font-size: 1.17rem;
@@ -233,7 +82,7 @@
     color: #8f969c;
     margin-bottom: 1rem;
     a{
-      color: $primary-color;
+      color: $primary;
     }
   }
   .input-box{
@@ -254,8 +103,8 @@
     }
   }
   .tag-list{
-    @include flex;
-    @include flex-wrap;
+    display: flex;
+    flex-wrap: wrap;
     .big-label{
       margin-right: 12px;
       margin-bottom: 12px;
@@ -277,7 +126,7 @@
     .slide-book-list{
       padding: 10px 15px;
       box-sizing: border-box;
-      @include flex;
+      display: flex;
       .cover{
         width: 52px;
         height: 72px;
@@ -297,7 +146,7 @@
     span{
       float: left;
       margin-right: 5px;
-      color: $secondary-color;
+      color: $gray-500;
     }
     &::after{
       content: '';
@@ -310,7 +159,7 @@
   }
   .gitbag{
     width: 100%;
-    @include flex;
+    display: flex;
     padding: 10px 15px;
     box-sizing: border-box;
     cursor: pointer;
@@ -324,7 +173,7 @@
       
     }
     .ui-btn-mini{
-      color: $primary-color;
+      color: $primary;
       font-size: 12px;
     }
   }
@@ -355,7 +204,7 @@
 .section-footer{
   text-align: center;
   header{
-    color: $secondary2-color
+    color: $gray-400
   }
   .account-list{
     margin: 1rem 0;
@@ -375,18 +224,18 @@
 
 .section-more{
   .more-list{
-    color: $secondary2-color;
+    color: $gray-400;
     font-size: 1.08rem;
     margin-bottom: 0.4rem;
-    @include flex;
-    @include flex-justify-c;
+    display: flex;
+    justify-content: center;
     li+li::before{
       content: '·';
       margin: 0 0.3rem;
     }
     li:hover{
       a{
-        color: $primary-color
+        color: $primary
       }
     }
   }
@@ -421,8 +270,8 @@
   }
 }
 .ui-btn_plain-primary{
-  color:$primary-color;
-  border:1px solid $primary-color;
+  color:$primary;
+  border:1px solid $primary;
 }
 .ui-btn-mini{
   font-size: 12px;
@@ -430,3 +279,8 @@
   /*   表示单行文本的行高为它本身的2.3倍 */
   // line-height: 2.3; 
 }
+
+.flex-view{
+  display: flex;
+}
+

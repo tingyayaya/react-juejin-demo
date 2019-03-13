@@ -19,7 +19,6 @@ class Authmenu extends Component {
 
   render() {trace(false)
     const { user } = this.props.store
-    console.log(user.status)
     return (
       <Fragment>
         { user.status ? <Onlog /> : <Offlog /> }

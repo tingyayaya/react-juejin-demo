@@ -4,6 +4,9 @@ import Carousel from 'react-bootstrap/Carousel'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 
+import style from './style.scss'
+
+import { mdiTumbleDryer } from '@mdi/js';
 
 @inject('store')
 @observer
@@ -37,17 +40,17 @@ class ControlledCarousel extends Component {
   render() {
     const { index, direction} = this.state;
     const { homeApi } = this.props.store
-    console.log(homeApi.bookList)
+    
     return (
-      <div className="wrapper">
+      <div className={style.wrapper}>
       <Carousel
         activeIndex={index}
         direction={direction}
         onSelect={this.handleSelect}
         indicators={false}
         interval = {null}
-        prevIcon ={<span className="w-icon w-icon-left arrow-left"></span>}
-        nextIcon ={<span className="w-icon w-icon-right arrow-right"></span>}
+        prevIcon ={<span className={`w-icon w-icon-left ${style["arrow-left"]}`}></span>}
+        nextIcon ={<span className={`w-icon w-icon-right ${style["arrow-right"]}`}></span>}
       >  
         {
           homeApi.bookList.map((item,i) => {
@@ -55,13 +58,13 @@ class ControlledCarousel extends Component {
               <Carousel.Item key={i}>
                 { item.map((subitem, i) => {
                   return (
-                    <Link to={`book/${subitem.bookId}`} className="slide-book-list" key={i}>
-                      <div className="cover"><img src={subitem.thumbnail}/></div>
-                      <div className="intrudtion">
-                        <h5 className="title">{subitem.title}</h5>
-                        <div className="price">
-                          <span className="new">新人价 ￥{(subitem.price*0.5).toFixed(1)}</span>
-                          <span className="delete">￥{subitem.price}</span>
+                    <Link to={`book/${subitem.bookId}`} className={style["slide-book-list"]} key={i}>
+                      <div className={style.cover}><img src={subitem.thumbnail}/></div>
+                      <div className={style.intrudtion}>
+                        <h5 className={style.title}>{subitem.title}</h5>
+                        <div className={style.price}>
+                          <span className={style.new}>新人价 ￥{(subitem.price*0.5).toFixed(1)}</span>
+                          <span className={style.delete}>￥{subitem.price}</span>
                         </div>
                       </div>
                     </Link>

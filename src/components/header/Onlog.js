@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import { observer, inject} from 'mobx-react'
 import { trace } from "mobx"
 
+import style from './style.scss'
+
 import UserDropList from './UserDropList'
+
 
 @inject("store")
 @observer
@@ -58,20 +61,20 @@ class Authmenu extends Component {
   render() {trace(false)
     const { user } = this.props.store
     return (
-      <ul className="auth-menu onlog-status">
-        <li className="write-article">
-          <div className="add-group">
-            <button className="add-btn ui-btn ui-btn_primary">写文章</button>
-            <div className="more ui-btn ui-btn_primary" onClick={this.handleMoreList.bind(this)}><i className="more-icon ion-android-arrow-dropdown"></i></div>
-            <ul className={`more-list ${this.state.isDrop ? '' : 'hide'}`}>
-              <li className="item">发布沸点</li>
-              <li className="item">分享链接</li>
+      <ul className={`${style['auth-menu']} ${style['onlog-status']}`}>
+        <li className={style['write-article']}>
+          <div className={style['add-group']}>
+            <button className={`${style['add-btn']} ${style['ui-btn']} ${style['ui-btn_primary']}`}>写文章</button>
+            <div className={`${style['mored']} ${style['ui-btn']} ${style['ui-btn_primary']}`} onClick={this.handleMoreList.bind(this)}><i className={`${style['more-icon']} ${style['ion-android-arrow-dropdown']}`}></i></div>
+            <ul className={`${style['more-list']} ${this.state.isDrop ? '' : 'hide'}`}>
+              <li className={style.item}>发布沸点</li>
+              <li className={style.item}>分享链接</li>
             </ul>
           </div>
         </li>
-        <li className="message"><i className="icon-bell"></i></li>
-        <li className="avatar" onClick={this.handleUserDropList.bind(this)}>
-          <div className="round-box">
+        <li className={style.message}><i className={style["icon-bell"]}></i></li>
+        <li className={style.avatar} onClick={this.handleUserDropList.bind(this)}>
+          <div className={style["round-box"]}>
             <img src={user.avatar} alt=""/>
           </div>
           <UserDropList isUserDrop={this.state.isUserDrop}/>

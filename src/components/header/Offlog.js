@@ -5,6 +5,7 @@ import submitIcon from '../../images/submit-icon.svg'
 import { trace } from "mobx"
 import Panel from './Panel'
 
+import style from './style.scss'
 
 @inject("store")
 @observer
@@ -53,15 +54,16 @@ class Offlog extends Component {
     // event.stopPropagation()
   }
   render() {trace(false)
+    const { panel } = this.props.store;
     return (
-      <ul className="auth-menu">
-        <li className="article" onClick={this.handleShowModal.bind(this)}>
+      <ul className={style["auth-menu"]}>
+        <li className={style.article} onClick={this.handleShowModal.bind(this)}>
           <img src={submitIcon} alt="" />
           <span>写文章</span>
-          <Panel />
-        </li><li className="register">
-          <span className="login-btn" 
-          onClick={this.handleLoginModal.bind(this)}>登录</span><span className="register-btn"
+          {panel.isShow && <Panel />}
+        </li><li className={style.register}>
+          <span className={style['login-btn']} 
+          onClick={this.handleLoginModal.bind(this)}>登录</span><span className={style['register-btn']}
           onClick={this.handleRegisterModal.bind(this)}>注册</span>
         </li>
       </ul>

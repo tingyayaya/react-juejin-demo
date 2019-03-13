@@ -33,11 +33,64 @@ const config = {
     rules: [
       {
         test: /\.(css|scss)$/,
+        exclude: `${APP_DIR}/css`,  //css modules 样式目录
         use: extractSass.extract({
           // 编译后使用什么loader来提取css文件，如下使用 style-loader 来提取
           fallback: 'style-loader',
           // 需要什么样的loader去编译文件，比如如下使用css-loader 去编译文件
-          use: ['css-loader', 'sass-loader'],
+          use: [ 
+            {
+              loader: 'css-loader?modules&localIdentName=[name]__[local]-[hash:base64:5]?sourceMap=true',
+            }, 
+            {
+              loader: 'postcss-loader',  //浏览器自动补全
+              options: {
+                sourceMap: true,
+                config: {
+                  path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+                }
+              }
+            }, 
+            {
+              loader: "sass-loader",
+              options: {
+                soureceMap: true
+              }
+            }
+          ],
+          publicPath: '../'
+        })
+      },
+      {
+        test: /\.(css|scss)$/,
+        include: `${APP_DIR}/css`, 
+        use: extractSass.extract({
+          // 编译后使用什么loader来提取css文件，如下使用 style-loader 来提取
+          fallback: 'style-loader',
+          // 需要什么样的loader去编译文件，比如如下使用css-loader 去编译文件
+          use: [ 
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            }, 
+            {
+              loader: 'postcss-loader',  //浏览器自动补全
+              options: {
+                sourceMap: true,
+                config: {
+                  path: 'postcss.config.js'  // 这个得在项目根目录创建此文件
+                }
+              }
+            }, 
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ],
           publicPath: '../'
         })
       },

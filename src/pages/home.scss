@@ -1,0 +1,35 @@
+@import "~@/css/variables.scss";
+
+//导航
+.category-nav{
+  background: #fff;
+  padding: 1.67rem;
+  clear: both;
+  margin-bottom: 1px; 
+  display: flex;
+  justify-content: space-between;
+  .nav-more{
+    line-height: 2;
+    display: none;
+  }
+  h5{
+    font-size: 1.33rem;
+    display: inline-block;
+    font-weight: 500;
+  }
+  .nav-list{
+    display: block;
+    display: flex;
+    align-items: center;
+    li{
+        color: $gray-500;
+        font-size: 1.17rem;
+        margin-left: 2rem;
+        &.active{
+          color: $primary;
+        }
+        
+    }
+  }
+}
+

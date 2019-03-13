@@ -1,33 +1,35 @@
-@import '~@/css/reset.css';
-@import '~@/css/mixin.scss';
+
+@import '~@/css/variables.scss';
 
 .my-nav{
-  @include flex-1;
-  @include flex;
-  @include flex-align-c;
+  display: flex;
+  flex: 1;
+  align-items: center;
   position: relative;
   height: 100%;
+  font-size: 1.33rem;
+  color: $secondary;
   .main-brand{
     padding-right: 1.67rem; 
   }
   .menu{
-    @include flex;
+    display: flex;
     li>a{
       padding-left: 1.67rem;
       padding-right: 1.67rem;
     }
     li:hover{
-      color: $primary-color;
+      color: $primary;
     }
     li.active{
-      color: $primary-color;
+      color: $primary;
     }
   }
   .search{
-    @include flex-1;
-    @include flex;
-    @include flex-justify-end;
-    @include flex-align-c;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     margin: 0 0.83rem;
     .input-group{
       width: 13rem;
@@ -38,15 +40,17 @@
         width: 100%;
         border-radius: 2px; 
         background-color: rgba(227,231,236,.2);
-        padding: 0.42rem 2.5rem 0.42rem 0.83rem;
+        padding: 0.6rem 2.5rem 0.6rem 0.6rem;
         border: 1px solid hsla(0,0%,59%,.2);
         box-sizing: border-box;
+        font-size: 1.1rem;
+        color: #666;
       }
       input:focus {
-        border: 1px solid $primary-color;
+        border: 1px solid $primary;
       }
       input[type='text']::-webkit-input-placeholder{
-        color: $secondary-color;
+        color: $gray-400;
         font-size: 1.08rem;
         box-sizing: border-box
       }
@@ -62,16 +66,16 @@
   }
   .auth-menu{
     height: 100%;
-    @include flex;
-    @include flex-align-c;
+    display: flex;
+    align-items: center;
     >li{
       padding-left: 1.2rem;
       padding-right: 1.2rem;
       height: 100%;
       position: relative;
       cursor: pointer;
-      @include flex;
-      @include flex-align-c;
+      display: flex;
+      align-items: center;
       color: #007fff;
       span{
         vertical-align: middle;
@@ -112,7 +116,7 @@
 }
 
 .ui-btn_primary{
-  background-color:$primary-color;
+  background-color:$primary;
   &:hover{
     background-color: #0571de
   }
@@ -120,15 +124,15 @@
 
 //写文章面板
 .submit-panel{
-  color: $secondary2-color;
+  color: $secondary;
   width: 326px;
   position: absolute;
   top: 101%;
-  left: -123px;
+  left: -104px;
   background: #fff;
   padding: 1rem 2rem;
   box-sizing: border-box;
-  @include border-1(0.5);
+  border: $input-border-width solid $input-border-color;
   z-index: 999;
   cursor: default;
   .title{
@@ -146,7 +150,7 @@
       list-style-position: inside;
       width: 100%;
       margin-bottom: 1rem;
-      color: $secondary2-color;
+      color: $secondary;
       font-size: 13px;
       box-sizing: border-box;
     }

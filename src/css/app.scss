@@ -1,0 +1,22 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "./normalize.css";
+@import "./sprite.css";
+
+@import './variables.scss';
+
+html{
+  font-size: 12px;
+  background: $background-color;
+}
+body {
+  font-size: 12px;
+  font-family: $font-family-base;
+  background: inherit !important;
+}
+.hide{
+  display: none;
+}
+
+.active {
+  color: $primary;
+}

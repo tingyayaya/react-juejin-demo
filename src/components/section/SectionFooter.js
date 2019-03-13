@@ -1,11 +1,13 @@
 import React, {Component} from 'react'
 
+import style from './style.scss'
+
 class SectionFooter extends Component {
   render() {
     return (
-      <div className="section-footer">
+      <div className={style["section-footer"]}>
         <header>关注我们</header>
-        <ul className="account-list">
+        <ul className={style["account-list"]}>
           <li>
             <a href="">
               <img src="data:image/png;base64,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" alt="" />

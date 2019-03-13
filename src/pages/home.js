@@ -18,7 +18,7 @@ import SectionOtherItem from '@/components/section/SectionOtherItem'
 import SectionFooter from '@/components/section/SectionFooter'
 import SectionMore from '@/components/section/SectionMore'
 
-import '@/css/home.scss'
+import style from './home.scss'
 
 @inject('store')
 @observer
@@ -48,10 +48,10 @@ class Home extends Component {
     return (
       <PrimaryLayout>
         <CenterMain>
-          <nav className="category-nav">
+          <nav className={style['category-nav']}>
             <h5>热门文章</h5>
-            <div className="nav-more">显示更多</div>
-            <ul className="nav-list">
+            <div className={style['nav-more']}>显示更多</div>
+            <ul className={style['nav-list']}>
               <PrimaryNav {...location} handleChangeTab={this.handleChangeTab.bind(this)}>
                 <li name=""><Link to={`/`}>推荐</Link></li>
                 <li name="frontend"><Link to={`/welcome/frontend`}>前端</Link></li>

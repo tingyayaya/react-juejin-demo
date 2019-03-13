@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import searchIcon from '../../images/search.svg'
 import searchFocusIcon from '../../images/search-focus.svg'
 
+import style from './style.scss'
+
 class Search extends Component {
   constructor(){
     super()
@@ -19,8 +21,8 @@ class Search extends Component {
   }
   render() {
     return (
-      <form className="search">
-        <div className="input-group">
+      <form className={style.search}>
+        <div className={style['input-group']}>
           <input 
             type="text" 
             placeholder="搜索掘金" 
@@ -28,7 +30,7 @@ class Search extends Component {
             onBlur={this.handleOnBlur.bind(this)} 
             onFocus={this.handleOnFocus.bind(this)}
             onChange={this.handleOnChange.bind(this)}/>
-          <span className="input-group-btn">
+          <span className={style["input-group-btn"]}>
             <img src={this.state.isFocus ? searchFocusIcon:searchIcon} alt="搜索"/>
           </span>
         </div>

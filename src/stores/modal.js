@@ -3,7 +3,8 @@ import {computed, observable, action } from "mobx";
 class Modal {
   @observable isShow = false
   @observable name =''
-  
+  @observable isClickHidden = false
+
   @action.bound onHideModal() {
     this.isShow = false
   }

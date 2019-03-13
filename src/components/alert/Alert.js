@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Alert from 'react-bootstrap/Alert'
-import "bootstrap/scss/bootstrap.scss"
+// import "bootstrap/scss/bootstrap.scss"
 import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
 

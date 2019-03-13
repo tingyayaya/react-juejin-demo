@@ -1,17 +1,8 @@
-@import '~@/css/reset.css';
-@import '~@/css/mixin.scss';
 
-/* 首页 header */
-html{
-  font-size: 12px;
-  background: #f4f5f5;
-}
-body{
-  background: inherit !important;
-}
 .container-fluid{
   width: 100%;
   max-width: 980px;
+  margin: auto;
 }
 
 .main-header-box{
@@ -33,27 +24,27 @@ body{
 
 .main-header .navbar{
   height: 100%;
-  @include flex-align-c;
 }
 
 
 //CenterMain LeftSide
 .welcome-view{
   margin-top: 1.67rem;
+  display: flex;
   .right-side{
     width: 20rem;
     margin-left: 1.67rem;
   }
   .center-main{
     overflow: hidden;
-    @include flex-1;
+    flex: 1;
   }
 }
 .suspension-panel{
-  @include flex;
-  @include flex-direction-column;
-  @include flex-align-c;
-  @include flex-justify-end;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-content: center;
   position: fixed;
   right: 2rem;
   bottom: 2rem;
@@ -71,9 +62,9 @@ body{
   border-radius: 50%;
   box-shadow: 0 0 5px rgba(0,0,0,.05);
   cursor: pointer;
-  @include flex;
-  @include flex-align-c;
-  @include flex-justify-c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 980px){

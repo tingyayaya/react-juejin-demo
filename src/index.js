@@ -5,6 +5,8 @@ import { AppContainer } from 'react-hot-loader'
 
 import store from '@/stores/store'
 
+import "@/css/app.scss"
+
 //引入mock.js
 require ("@/axios/mock.js")
 
