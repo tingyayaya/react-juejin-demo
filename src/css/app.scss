@@ -17,6 +17,46 @@ body {
   display: none;
 }
 
-.active {
-  color: $primary;
+//bootstrap carousel
+.carousel{
+  .carousel-control-prev, .carousel-control-next{
+    bottom: inherit;
+    top: -28px;
+    opacity: 1;
+    width: inherit;
+  }
+  .carousel-control-prev{
+    right: 30px;
+    left: inherit;
+  }
+  .carousel-control-next{
+    right: 10px;
+  }
+  .arrow-left{
+    position: relative;
+    &:hover{
+      background-position: -116px 0px;
+    }
+  }
+  .arrow-right{
+    position: relative;
+    &:hover{
+      background-position: -116px -17px;
+    }
+  }
+}
+
+//geetest
+.geetest_holder{
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  &.geetest_holder{
+    min-width: 80px;
+    height: 36px;
+    overflow: hidden;
+  }
 }

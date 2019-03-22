@@ -141,14 +141,18 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    if(!this.props.parent){
+    if(!this.props.flag){
       this.account.focus()
     }
+    const { modal } = this.props.store
+    modal.isClickHidden = false
   }
   render() {
     const { flag } = this.props
+    const { modal } = this.props.store
     return (
       <Fragment>
+        {modal.parent=='gift' && <div className={style.gift}>完成注册后，将向你的账户存入 45 元礼券</div>}
         <div className={style["input-group"]}>
             <div className={style["input-box"]}>
               <input type="text" maxLength="20" placeholder={`${ flag ? "用户名": "请输入用户名"}`} className={style["input"]} name="registerUsername" autoComplete="off"
@@ -172,9 +176,9 @@ class Register extends Component {
                 onChange={this.handleInputPassword.bind(this)}/>
             </div>
           </div>
-          <Button className="primary" onClick={this.handleRegister.bind(this)}>注册</Button>
+          <Button variant="primary" className={style.btn} onClick={this.handleRegister.bind(this)}>{flag?'立即注册':'注册'}</Button>
           <div className={`${style["button-group"]} ${ flag && 'hide'}`}>
-            <div style={{"margin": "0 auto"}}><span className={`${style["link"]}`} onClick={this.handleChangeModalName.bind(this)}>已有账号登录</span></div>
+            <div style={{"textAlign": "center"}}><span className={`${style["link"]}`} onClick={this.handleChangeModalName.bind(this)}>已有账号登录</span></div>
           </div>
       </Fragment>
     )

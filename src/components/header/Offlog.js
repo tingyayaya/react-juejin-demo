@@ -39,6 +39,7 @@ class Offlog extends Component {
     const { modal } = this.props.store
     if(modal.onShowModal){
       modal.name = 'login'
+      modal.parent = 'header'
       modal.onShowModal()
     }
     // event.nativeEvent.stopImmediatePropagation();
@@ -48,6 +49,7 @@ class Offlog extends Component {
     const { modal } = this.props.store
     if(modal.onShowModal){
       modal.name = 'register'
+      modal.parent = 'header'
       modal.onShowModal()
     }
     // event.nativeEvent.stopImmediatePropagation();

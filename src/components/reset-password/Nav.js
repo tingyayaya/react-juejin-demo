@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
 
+import style from './style.scss'
+
 class Nav extends Component {
   static propTypes = {
     hanleChangeTab: PropTypes.func
@@ -20,10 +22,11 @@ class Nav extends Component {
   }
   render() {
     return (
-      <nav className="nav">
+      <nav className={style.nav}>
         {this.props.children.map((child, i) => {
+          
           return React.cloneElement(child, {
-            className: [this.props.className,this.state.activeIndex===i ? 'active': ''].join(' '),
+            className: [`${style['nav-item']}`,this.state.activeIndex===i ? `${style.active}`: ''].join(' '),
             key: i,
             onClick: this.handleChangeTab.bind(this, i)
           })

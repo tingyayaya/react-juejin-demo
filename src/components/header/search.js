@@ -21,20 +21,22 @@ class Search extends Component {
   }
   render() {
     return (
-      <form className={style.search}>
-        <div className={style['input-group']}>
-          <input 
-            type="text" 
-            placeholder="搜索掘金" 
-            value={this.state.text} 
-            onBlur={this.handleOnBlur.bind(this)} 
-            onFocus={this.handleOnFocus.bind(this)}
-            onChange={this.handleOnChange.bind(this)}/>
-          <span className={style["input-group-btn"]}>
-            <img src={this.state.isFocus ? searchFocusIcon:searchIcon} alt="搜索"/>
-          </span>
-        </div>
-      </form>
+      <div className={style.search}>
+        <form className={style.searchForm}>
+          <div className={style['input-group']}>
+            <input 
+              type="text" 
+              placeholder="搜索掘金" 
+              value={this.state.text} 
+              onBlur={this.handleOnBlur.bind(this)} 
+              onFocus={this.handleOnFocus.bind(this)}
+              onChange={this.handleOnChange.bind(this)}/>
+            <span className={style["input-group-btn"]}>
+              <img src={this.state.isFocus ? searchFocusIcon:searchIcon} alt="搜索"/>
+            </span>
+          </div>
+        </form>
+      </div>
     )
   }
 }

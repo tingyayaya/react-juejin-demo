@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
-
+import Button from 'react-bootstrap/Button'
 import ControlledCarousel from './ControlledCarousel'
 import style from './style.scss'
 
@@ -33,12 +33,6 @@ class SectionCarousel extends Component {
       <div className={`${style["section"]} ${style["w-shadow"]}`}>
         <header className={style.header}>
           <div className={style.left}><span>热门标签</span> </div>
-          <div className={style["right"]}>
-            <div>
-              <span className="iconfont icon-nav-left"></span>
-              <span className="iconfont icon-nav-right"></span>
-            </div>
-          </div>
         </header>
         <div className={style["book-list"]}>
           <ControlledCarousel />
@@ -52,9 +46,7 @@ class SectionCarousel extends Component {
           </div>
           <div className={style.intrudtion}>
             <div className={style.title}>送你 <span className="warning-text">45元</span> 买小册</div>
-            <div className={style["btn-mini"]}>
-              <div className={`ui-btn ui-btn_plain-primary ${style['ui-btn-mini']}`}>立即领取</div>
-            </div>
+            <Button variant="outline-primary" size="sm"> 立即领取 </Button>
           </div>
         </div>
       </div>

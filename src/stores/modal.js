@@ -4,6 +4,7 @@ class Modal {
   @observable isShow = false
   @observable name =''
   @observable isClickHidden = false
+  @observable parent = ''
 
   @action.bound onHideModal() {
     this.isShow = false

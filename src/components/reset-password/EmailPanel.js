@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { observer, inject} from 'mobx-react'
 
+import style from './style.scss'
+import Button from 'react-bootstrap/Button'
+
 @inject("store")
 @observer
 class EmailPanel extends Component {
@@ -48,16 +51,16 @@ class EmailPanel extends Component {
   }
   render() {
     return (
-      <div className="panel email">
+      <div className="email panel">
         { this.state.successMsg
-        ? <div className="success-message">密码重置邮件已发送，请前往邮箱重置密码</div>
-        :(<div className="content">
-            <div className="input-group">
-              <input type="text" placeholder="请输入邮箱" autoComplete="off" className="input full-width"
+        ? <div className={style["success-message"]}>密码重置邮件已发送，请前往邮箱重置密码</div>
+        :(<div className={style["content"]}>
+            <div className={style["input-group"]}>
+              <input type="text" placeholder="请输入邮箱" autoComplete="off" className={`${style.input} ${style['full-width']}`}
                 value={this.state.email}
                 onChange={this.handleInput.bind(this)}/>
             </div>
-            <button className="ui-btn ui-btn_primary submit-btn" onClick={this.onsubmit.bind(this)}>发送邮件</button>
+            <Button variant="primary" size="lg" className={`${style['submit-btn']}`} onClick={this.onsubmit.bind(this)}>发送邮件</Button>
           </div>
           )
         }

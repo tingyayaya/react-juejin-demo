@@ -6,19 +6,31 @@ import Books from '@/pages/Books';
 import ResetPassword from '@/pages/ResetPassword';
 import Welcome from '@/pages/Welcome';
  
+import MyLoading from '@/components/loading/MyLoading'
+
+import Loadable from 'react-loadable'
+const AsyncHome = Loadable({
+  loader: () => import('@/pages/Home'),
+  loading: MyLoading
+});
+const AsyncWecome = Loadable({
+  loader: () => import('@/pages/Welcome'),
+  loading: MyLoading
+});
+
 var routes =[
   {
     path: '/',
     exact: true,
-    component: Home
+    component: AsyncHome
   },
   {
     path: '/welcome',
-    component: Home,
+    component: AsyncHome,
     routes: [
       {
         path: '/welcome/:name',
-        component: Welcome
+        component: AsyncWecome
       }
     ]
   },

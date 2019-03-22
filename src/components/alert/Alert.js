@@ -4,7 +4,7 @@ import Alert from 'react-bootstrap/Alert'
 import { inject, observer } from 'mobx-react'
 import PropTypes from 'prop-types'
 
-import "./style.scss"
+import style from "./style.scss"
 
 @inject("store")
 @observer
@@ -29,7 +29,7 @@ class AlertPanel extends Component {
   render() {
     const {alert} = this.props
     return (
-      <div className="alert-box">
+      <div className={style['alert-box']}>
         <Alert variant={alert.variant} show={alert.show} onClose={this.hanleOnClose.bind(this)}>{alert.tips}</Alert>
       </div>
     )

@@ -6,6 +6,7 @@ import { inject, observer } from 'mobx-react'
 
 import style from './style.scss'
 
+
 import { mdiTumbleDryer } from '@mdi/js';
 
 @inject('store')
@@ -40,9 +41,8 @@ class ControlledCarousel extends Component {
   render() {
     const { index, direction} = this.state;
     const { homeApi } = this.props.store
-    
+   
     return (
-      <div className={style.wrapper}>
       <Carousel
         activeIndex={index}
         direction={direction}
@@ -75,7 +75,6 @@ class ControlledCarousel extends Component {
           })
         }
       </Carousel>
-      </div>
     );
   }
 }

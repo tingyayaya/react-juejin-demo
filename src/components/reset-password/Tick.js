@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-import './style.scss'
+import style from './style.scss'
 
 class Tick extends Component {
   static propTypes = {
@@ -35,7 +35,7 @@ class Tick extends Component {
   }
   render() {
     return (
-      <div className="seconds">{this.state.seconds}后重新发送</div>
+      <span className={style.seconds}>{this.state.seconds}后重新发送</span>
     )
   }
 }

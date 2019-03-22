@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 
 import ModalLogReg from '@/components/modals/ModalLogReg'
 import ModalNewGift from '@/components/modals/ModalNewGift'
+import ModelGetGift from '@/components/modals/ModelGetGift'
 
 import style from './style.scss'
 
@@ -33,6 +34,10 @@ class Modalbox extends Component {
     event.nativeEvent.stopImmediatePropagation(); 
     event.stopPropagation();
   }
+  componentDidMount() {
+    const { modal } = this.props.store
+    
+  }
   render() {
     const { modal } = this.props.store
     var modalBox;
@@ -40,6 +45,8 @@ class Modalbox extends Component {
       modalBox =  <ModalLogReg />
     }else if(modal.name == 'gift'){
       modalBox =  <ModalNewGift />
+    }else if(modal.name == 'getGift'){
+      modalBox =  <ModelGetGift />
     }
     return ( 
       <div className={style['modal-box']}  onClick={this.handleModalHidden.bind(this)}>

@@ -23,7 +23,9 @@ const compiler = webpack(config);
 app.use(express.static(DIST_DIR))
 app.use(webpackDevMiddleware(compiler,{
   publicPath: config.output.publicPath,
-  quiet: true
+  stats: {
+    colors: true
+  },
 }))
 app.use(hotMiddleWare(compiler));
 

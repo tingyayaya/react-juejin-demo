@@ -10,6 +10,12 @@ import BackToTop from '@/layout/BackToTop'
 
 import style from './style.scss'
 
+import MyLoading from '@/components/loading/MyLoading'
+import Loadable from 'react-loadable'
+const LoadableHeader = Loadable({
+  loader: () => import('@/components/header/Header'),
+  loading: MyLoading
+});
 
 @inject("store")
 @observer
@@ -41,13 +47,13 @@ class Layout extends Component {
         <div className={style["main-header-box"]}> 
           <header className={style["main-header"]}>
             <nav className={`${style["container-fluid"]} ${style["navbar"]}`}>
-              <Header />
+              <LoadableHeader />
             </nav>
           </header>
         </div>
-        {/* <div className={`${style["container-fluid"]} ${style["welcome-view"]}`}>
+        <div className={`${style["container-fluid"]} ${style["main-view"]}`}>
           {this.props.children}
-        </div> */}
+        </div>
       </div>
     )
   }

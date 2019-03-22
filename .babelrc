@@ -15,6 +15,7 @@
         "helpers": true,
         "regenerator": true,
         "useESModules": false
-      }]
+      }],
+      ["dynamic-import-webpack"]
   ]
 }

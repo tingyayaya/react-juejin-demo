@@ -4,7 +4,6 @@ import { inject, observer } from 'mobx-react'
 import { trace } from 'mobx'
 
 import EntryList from '@/components/list/EntryList'
-import DiamondsLoading from '@/components/loading/DiamondsLoading'
 
 @inject('store')
 @observer

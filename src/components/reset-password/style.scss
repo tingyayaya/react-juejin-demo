@@ -1,3 +1,5 @@
+@import "~@/css/variables.scss";
+
 //tick
 .seconds{
   position: absolute;
@@ -5,4 +7,91 @@
   top: 0.8rem;
   color: #90979c;
   width: 100px;
+  text-align: right;
 }
+
+.title{
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+.nav{
+  display: flex;
+  margin-top: 3rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #f1f1f1;
+  user-select: none;
+  .nav-item{
+    flex: 1 1 auto;
+    padding: .8rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    &.active{
+      color: #007fff;
+      border-bottom: 2px solid;
+    }
+  }
+}
+
+.full-width{
+  width: 100%;
+}
+.input-group:nth-last-child(2) .input{
+  margin-bottom: 0;
+}
+.input{
+  margin-bottom: 2rem;
+  padding: .5rem 0;
+  font-size: 1.1em;
+  border: none;
+  border-bottom: 1px solid #eee;
+  outline: none;
+  &::-webkit-input-placeholder{
+    color: rgb(104, 104, 104);
+    font-weight: 300;
+  }
+}
+.submit-btn{
+  margin-top: 3rem;
+  width: 100%;
+}
+
+//忘记密码
+
+
+.send-vcode-btn{
+  box-sizing: border-box;
+  position: relative;
+  flex: none;
+  margin-left: 0.67rem;
+  .btn1 {
+    border-radius: 2px;
+  }
+  .btn2{
+    color: $primary;
+  }
+  &.box{
+    overflow: hidden;
+    height: 100%;
+  }
+  &.pos{
+    position: absolute;
+    top: 50%;
+    margin-top: -0.8rem;
+    right: 0.83rem;
+    .seconds{
+      top: 0;
+    }
+  }
+  &.pos.box{
+    height: auto;
+  }
+}
+.vcode-input-group {
+  position: relative;
+  display: flex;
+  .vcode-input{
+    flex: auto;
+  }
+}
+

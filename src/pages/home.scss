@@ -33,3 +33,13 @@
   }
 }
 
+@media screen and (max-width: 600px){
+  .category-nav{
+    .nav-list{
+      display: none;
+    }
+    .nav-more{
+      display: block;
+    }
+  }
+}

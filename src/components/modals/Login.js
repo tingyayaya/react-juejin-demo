@@ -3,7 +3,7 @@ import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect} from "react-router-dom";
-
+import Button from 'react-bootstrap/Button'
 import style from './style.scss'
 
 @inject('store')
@@ -136,10 +136,14 @@ class Login extends Component {
   }
   componentDidMount() {
     this.account.focus()
+    const { modal } = this.props.store
+    modal.isClickHidden = false
   }
   render() {
+    const { modal } = this.props.store
     return (
       <Fragment>
+        {modal.parent=='gift' && <div className={style.gift}>完成登录后，将向你的账户存入 45 元礼券</div>}
         <div className={style["input-group"]}>
           <div className={style["input-box"]}>
             <input type="text" maxLength="64" placeholder="请输入手机号或邮箱" className={style["input"]} name="phoneOrEmail" autoComplete="off" 
@@ -157,8 +161,8 @@ class Login extends Component {
               onChange={this.handleInputPassword.bind(this)}/>
           </div>
         </div>
-        <button className="ui-btn ui-btn_primary" onClick={this.onsubmit.bind(this)}>登录</button>
-        <div className={style["input-group"]}>
+        <Button variant="primary" className={style.btn} onClick={this.onsubmit.bind(this)}>登录</Button>
+        <div className={`${style["footer"]}`}>
           <div>没有账号？<span className={style["link"]} onClick={this.handleChangeModalName.bind(this)}>注册</span></div>
           <div><Link to="/reset-password" onClick={this.handleModalClose.bind(this)} className={style["link"]}> 忘记密码</Link></div>
         </div>

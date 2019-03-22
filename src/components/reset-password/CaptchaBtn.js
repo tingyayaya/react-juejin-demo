@@ -4,7 +4,11 @@ import { observer, inject} from 'mobx-react'
 import axios from 'axios'
 import "@/components/libs/gt"
 
+import Button from 'react-bootstrap/Button'
 import Tick from './Tick'
+import classNames from 'classnames'
+
+import style from './style.scss'
 
 @inject("store")
 @observer
@@ -115,12 +119,22 @@ class CaptchaBtn extends Component {
     })
   }
   render() {
-    
+    let button, btnbox;
+    if(this.props.parent) {
+      button =  <Button variant="primary" size="lg" className={style.btn1}>获取验证码</Button>
+    }else{
+      button = <span className={style.btn2}>获取验证码</span>
+    }
+    btnbox = classNames({
+      [style['send-vcode-btn']]: true,
+      [style.pos]: !this.props.parent,
+      [style.box] : !this.state.tick
+    })
     return (
-      <div className="send-vcode-btn">
+      <div className={btnbox}>
         {this.state.tick 
           ? <Tick tick={this.tick.bind(this)} seconds={60}/>
-          :<button className={this.props.parent ? 'ui-btn ui-btn_primary': 'btn'} >获取验证码</button>
+          : button
         }
         <div ref="captcha" onClick={this.handleVCode.bind(this)}></div>
       </div>

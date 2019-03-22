@@ -3,6 +3,10 @@ import PropTypes from 'prop-types'
 import { observer, inject} from 'mobx-react'
 import CaptchaBtn from './CaptchaBtn'
 
+import Button from 'react-bootstrap/Button'
+import style from './style.scss'
+
+
 @inject("store")
 @observer
 class PhonePanel extends Component {
@@ -82,25 +86,25 @@ class PhonePanel extends Component {
   }
   render() {
     return (
-      <div className="panel phone">
-        <div className="content">
-          <div className="input-group">
-            <input type="tel" placeholder="请输入手机号" autoComplete="off" maxLength="11" className="input full-width"
+      <div >
+        <div >
+          <div className={style["input-group"]}>
+            <input type="tel" placeholder="请输入手机号" autoComplete="off" maxLength="11" className={`${style.input} ${style['full-width']}`}
               value={this.state.phone}
               onChange={this.handleInputPhone.bind(this)}/>
           </div>
-          <div className="input-group vcode-input-group">
-            <input type="text" placeholder="请输入验证码" autoComplete="off"  className="input vcode-input"
+          <div className={`${style['input-group']} ${style['vcode-input-group']}`}>
+            <input type="text" placeholder="请输入验证码" autoComplete="off"  className={`${style.input} ${style['vcode-input']}`}
                 value={this.state.code}
                 onChange={this.handleInputCode.bind(this)}/>
                 <CaptchaBtn phone={this.state.phone} parent='phonePanel' getCaptchaResult={this.getCaptchaResult.bind(this)}/>
           </div>
-          <div className="input-group">
-            <input type="password" placeholder="请输入新密码" autoComplete="off"  className="input full-width"
+          <div className={style["input-group"]}>
+            <input type="password" placeholder="请输入新密码" autoComplete="off"  className={`${style.input} ${style['full-width']}`}
                 value={this.state.password}
                 onChange={this.handleInputPassword.bind(this)}/>
           </div>
-          <button className="ui-btn ui-btn_primary submit-btn" onClick={this.onsubmit.bind(this)}>确定</button>
+          <Button variant="primary" size="lg" className={`${style['submit-btn']}`} onClick={this.onsubmit.bind(this)}>确定</Button>
         </div>
       </div>
     )

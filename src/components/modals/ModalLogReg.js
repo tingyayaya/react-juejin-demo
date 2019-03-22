@@ -65,6 +65,7 @@ class ModalLogin extends Component {
         </div>
         <Icon path={ mdiClose } size={1} className={style["close"]} onClick={this.handleLoginModal.bind(this)}/>
         <header className={style["title"]}>{modal.name==='login' ? '登录' : '注册'}</header>
+       
         {modal.name==='login' 
           ? <Login submit={this.handleSubmit.bind(this)} changeFoucs={this.handleFocus.bind(this)}/> 
           : <Register handleRegister={this.handleRegister.bind(this)} /> }

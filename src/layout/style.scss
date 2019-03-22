@@ -1,7 +1,7 @@
 
 .container-fluid{
   width: 100%;
-  max-width: 980px;
+  max-width: 960px;
   margin: auto;
 }
 
@@ -28,7 +28,7 @@
 
 
 //CenterMain LeftSide
-.welcome-view{
+.main-view{
   margin-top: 1.67rem;
   display: flex;
   .right-side{
@@ -70,5 +70,10 @@
 @media screen and (max-width: 980px){
   .main-header .container-fluid{
     width: 96%;
+  }
+  .main-view {
+    .right-side{
+      display: none;
+    }
   }
 }

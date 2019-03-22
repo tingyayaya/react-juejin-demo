@@ -31,13 +31,23 @@ class ModalNewGift extends Component {
     event.nativeEvent.stopImmediatePropagation(); 
     event.stopPropagation();
   }
+  handleStopHideModal(event) {
+    const { modal } = this.props.store
+    event.nativeEvent.stopImmediatePropagation(); 
+    event.stopPropagation();
+  }
+  handleSubmit() {
+    const { modal } = this.props.store
+    modal.name = 'register'
+    modal.parent = 'gift'
+  }
   componentDidMount() {
     const { modal } = this.props.store
     modal.isClickHidden = true
   }
   render() {
     return (
-      <div className={style["content-box"]}>
+      <div className={style["content-box"]} onClick={this.handleStopHideModal.bind(this)}>
         <Icon path={ mdiClose } size={1} className={style["close"]} color="#f6e3b7" onClick={this.handleCloseModal.bind(this)}/>
         <div className={style["header"]}>
           <div className={style["icon"]}>
@@ -73,7 +83,7 @@ class ModalNewGift extends Component {
         </div>
         </div>
         <div className={style["remark"]}>注：专享券的使用期限在领券的七天内。</div>
-        <div className={style["submit-btn"]}>一键领取</div>
+        <div className={style["submit-btn"]} onClick={this.handleSubmit.bind(this)}>一键领取</div>
       </div>
     )
   }

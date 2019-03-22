@@ -7,24 +7,11 @@ import { mdiMenuUp } from '@mdi/js'
 import style from './style.scss'
 
 class BackToTop extends Component {
-  componentDidMount() {
-    window.addEventListener('scroll', () => {
-      let scrollTop = document.documentElement.scrollTop || document.body/scrollTop
-      if(scrollTop > 1000) {
-        this.setState({
-          show: true
-        })
-      }else{
-        this.setState({
-          show: false
-        })
-      }
-    })
-  }
+  
   constructor() {
     super() 
     this.state = {
-      show: false
+      show: true
     }
   }
   handleGoTop() {
@@ -39,6 +26,24 @@ class BackToTop extends Component {
           window.clearInterval( scrollToTop );
         }
     }, 2);
+  }
+  _scroll() {
+    let scrollTop = document.documentElement.scrollTop || document.body/scrollTop
+    if(scrollTop > 1000) {
+      this.setState({
+        show: true
+      })
+    }else{
+      this.setState({
+        show: false
+      })
+    }
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this._scroll.bind(this))
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll',this._scroll.bind(this))
   }
   render() {
     const { show } = this.state

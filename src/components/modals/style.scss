@@ -22,7 +22,11 @@
     }
   }
 }
-
+.btn{
+  width: 100%;
+  font-size: 1.17rem;
+  padding: 0.58rem;
+}
 .modal-box{
   display: flex;
   align-items: center;
@@ -35,6 +39,9 @@
   background-color: rgba(0,0,0,.3);
   z-index: 500;
 }
+
+//logreg
+
 .auth-form{
   position: relative;
   padding: 2rem;
@@ -48,6 +55,12 @@
     float: right;
     opacity: 0.4;
     cursor: pointer;
+  }
+  .gift {
+    color: $primary;
+    margin-bottom: 10px;
+    font-size: 12px;
+    margin-top: -10px;
   }
   .title{
     font-size: 1.5rem;
@@ -69,26 +82,17 @@
       }
     }
   }
-  .ui-btn{
-    padding: 0.9rem;
-  }
   .button-group{
-   display: flex;
-    justify-content: space-between;
-    font-size: 1.17rem;
-    color: $secondary;
-    margin-top: 1rem;
-    .link{
+    margin: 1rem 0 0;
+    .link {
       color: $primary;
-      cursor: pointer;
     }
   }
   .other-login{
     margin-top: 1.5rem;
     color: $secondary;
     font-size: 1.17rem; 
-    .oauth{
-      
+    .oauth{ 
       display: flex;
       justify-content: space-around;
       margin-top: 1rem;
@@ -122,20 +126,171 @@
 .panfish .blindflod{
   width: 8.6rem;
 }
+.footer{
+  color: $gray-500;
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: space-between;
+  .link{
+    color: $primary;
+    cursor: pointer;
+  }
+}
 
 //modalnewgift 
-// .content-box{
-//   position: relative;
-//   width: 100%;
-//   max-width: 350px;
-//   padding: 30px 20px;
-//   background-image: linear-gradient(140deg,#f87554,#f0232f);
-//   border-radius: 2px;
-//   .header{
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     color: #fff;
-//     margin-bottom: 30px;
-//   }
-// }
+.content-box{
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  padding: 30px 20px;
+  background-image: linear-gradient(140deg,#f87554,#f0232f);
+  border-radius: 2px;
+  .header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 30px;
+    .icon {
+      img {
+        width: 60px;
+        display: block;
+      }
+    }
+    .txt {
+      font-size: 28px;
+      margin-left: 25px;
+      font-weight: 700;
+    }
+  }
+  .close{
+    position: absolute;
+    width: 30px;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    line-height: 30px;
+    color: #eed7a1;
+    text-align: center;
+    cursor: pointer;
+  }
+  .desc {
+    color: #f6e3b7;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  .tickets {
+    margin-top: 18px;
+    .ticket {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin-bottom: 8px;
+      font-size: 16px;
+      position: relative;
+      &::after, &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 12px;
+        height: 56px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 2;
+      }
+      &::after {
+        right: 0;
+        background-image: url("~@/images/gift_right.png")
+      }
+      &::before {
+        left: 0;
+        background-image: url("~@/images/gift_left.png")
+      }
+      .ticket__inner {
+        display: flex;
+        background-color: #fff;
+        border-top: 1px solid #eed7a1;
+        border-bottom: 1px solid #eed7a1;
+        height: 54px;
+        line-height: 54px;
+        box-sizing: inherit;
+        .enjoy {
+          color: #8b572a;
+          text-align: center;
+          font-weight: 300;
+          flex-grow: 1;
+          flex-basis: 0;
+          flex-shrink: 0;
+          span {
+            display: block;
+            text-align: center;
+            color: #8b572a;
+            font-weight: 400;
+          }
+        }
+        .sale {
+          text-align: center;
+          color: #8b572a;
+          flex-grow: 1;
+          flex-basis: 0;
+          flex-shrink: 0;
+          font-weight: 500;
+          background-position: 0 0;
+          background-image: url(~@/images/ticket-border.png);
+          background-repeat: repeat-y;
+          background-size: 2px;
+        }
+      }
+    }
+  }
+  .remark {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #f6e3b7;
+    font-weight: 300;
+  }
+  .submit-btn {
+    cursor: pointer;
+    line-height: 45px;
+    height: 45px;
+    border-radius: 2px;
+    text-align: center;
+    background-image: linear-gradient(180deg,#fde2ac,#fbc174);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    font-size: 18px;
+    color: #8b572a;
+  }
+}
+
+//领取成功失败
+.model {
+  width: 100%;
+  max-width: 320px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 20px 25px;
+  .heading {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  .contentText {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .btnOk {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 14px;
+  }
+  .btnSuccessFooter{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .btnOk {
+      font-size: 14px;
+      width: 106px;
+    }
+  }
+}

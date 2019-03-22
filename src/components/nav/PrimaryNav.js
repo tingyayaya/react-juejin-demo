@@ -1,6 +1,8 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 
+import style from './style.scss'
+
 class PrimaryNav extends Component {
   static propTypes = {
     handleChangeTab: PropTypes.func
@@ -31,7 +33,7 @@ class PrimaryNav extends Component {
       <Fragment>
         {this.props.children.map((child, i) => {
           return React.cloneElement(child, {
-            className: [child.props.name === this.state.activeIndex? 'active': ''].join(' '),
+            className: [child.props.name === this.state.activeIndex? `${style.active}`: ''].join(' '),
             key: i,
             onClick: this.handleChangeTab.bind(this, child.props.name)
           })

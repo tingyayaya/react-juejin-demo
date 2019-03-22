@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { Route, Link } from "react-router-dom";
 import PropTypes from 'prop-types'
 import { inject, observer } from 'mobx-react'
+//import inject_unmount from '@/utils/inject_unmount'
 
 import PrimaryLayout from '@/layout/PrimaryLayout'
 import RightSide from '@/layout/RightSide'
@@ -9,7 +10,7 @@ import CenterMain from '@/layout/CenterMain'
 import PrimaryNav from '@/components/nav/PrimaryNav'
 import RouteWithSubRoutes from '@/layout/RouteWithSubRoutes'
 import Welcome from '@/pages/Welcome'
-import DiamondsLoading from '@/components/loading/DiamondsLoading'
+import MyLoading from '@/components/loading/MyLoading'
 import SectionRegister from '@/components/section/SectionRegister'
 import SectionTag from '@/components/section/SectionTag'
 import SectionCarousel from '@/components/section/SectionCarousel'
@@ -20,6 +21,14 @@ import SectionMore from '@/components/section/SectionMore'
 
 import style from './home.scss'
 
+import Loadable from 'react-loadable'
+const AsyncWelcome = Loadable({
+  loader: () => import('@/pages/Welcome'),
+  loading: MyLoading
+});
+
+
+//@inject_unmount
 @inject('store')
 @observer
 class Home extends Component {
@@ -44,7 +53,7 @@ class Home extends Component {
     this.props.store.homeApi.getBookList({name: ''})
   }
   render() {
-    const { routes, match, location } = this.props
+    const { routes, match, location } = this.props;
     return (
       <PrimaryLayout>
         <CenterMain>
@@ -53,7 +62,7 @@ class Home extends Component {
             <div className={style['nav-more']}>显示更多</div>
             <ul className={style['nav-list']}>
               <PrimaryNav {...location} handleChangeTab={this.handleChangeTab.bind(this)}>
-                <li name=""><Link to={`/`}>推荐</Link></li>
+                <li name="" ><Link to={`/`}>推荐</Link></li>
                 <li name="frontend"><Link to={`/welcome/frontend`}>前端</Link></li>
                 <li name="android"><Link to={`/welcome/android`}>Android</Link></li>
                 <li name="backend"><Link to={`/welcome/backend`}>后端</Link></li>
@@ -67,7 +76,7 @@ class Home extends Component {
           </nav>
           { match.url !== "/"
             ? routes.map((route, i) => <RouteWithSubRoutes key={i} {...route}/>)
-            : <Route  path="/" component={ Welcome }/>}
+            : <Route  path="/" component={ AsyncWelcome }/>}
         </CenterMain>
         <RightSide>
           <SectionRegister />

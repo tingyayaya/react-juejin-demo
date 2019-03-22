@@ -40,7 +40,12 @@ const config = {
           // 需要什么样的loader去编译文件，比如如下使用css-loader 去编译文件
           use: [ 
             {
-              loader: 'css-loader?modules&localIdentName=[name]__[local]-[hash:base64:5]?sourceMap=true',
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+                modules: true,
+                localIdentName: '[name]__[local]-[hash:base64:5]',
+              }
             }, 
             {
               loader: 'postcss-loader',  //浏览器自动补全
@@ -54,7 +59,7 @@ const config = {
             {
               loader: "sass-loader",
               options: {
-                soureceMap: true
+                sourceMap: true,
               }
             }
           ],
@@ -120,7 +125,7 @@ const config = {
         }
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.js$/,
         use: {
           loader: 'babel-loader'
         },
